@@ -1,36 +1,16 @@
-import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Filter } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
-import LoadingSpinner from '../components/LoadingSpinner';
 import { servicesApi } from '../lib/api';
 import { serviceCategoryLabels } from '../lib/utils';
 import { Button } from '../components/ui/button';
 
 const ServicesPage = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || '';
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await servicesApi.getAll(activeCategory || undefined);
-        setServices(response.data ?? []);
-      } catch (err) {
-        console.error('Error fetching services:', err);
-        setError(err.message || 'Failed to load services. Is the backend running?');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchServices();
-  }, [activeCategory]);
+  const services = servicesApi.getAll(activeCategory || undefined).data;
 
   const categories = [
     { value: '', label: 'All Services' },
@@ -62,7 +42,7 @@ const ServicesPage = () => {
               Our Services
             </h1>
             <p className="font-body text-muted-foreground text-lg">
-              From intimate gatherings to grand celebrations, we bring your vision to life 
+              From intimate gatherings to grand celebrations, we bring your vision to life
               with stunning décor tailored to your unique style.
             </p>
           </motion.div>
@@ -85,8 +65,8 @@ const ServicesPage = () => {
                   variant={activeCategory === cat.value ? 'default' : 'outline'}
                   size="sm"
                   className={`rounded-full ${
-                    activeCategory === cat.value 
-                      ? 'bg-primary text-primary-foreground' 
+                    activeCategory === cat.value
+                      ? 'bg-primary text-primary-foreground'
                       : 'text-foreground hover:bg-primary/10'
                   }`}
                   onClick={() => handleCategoryChange(cat.value)}
@@ -99,18 +79,11 @@ const ServicesPage = () => {
           </div>
 
           {/* Services Grid */}
-          {loading ? (
-            <LoadingSpinner />
-          ) : error ? (
-            <div className="text-center py-12">
-              <p className="font-body text-destructive mb-2">{error}</p>
-              <p className="font-body text-sm text-muted-foreground">Ensure the backend is running and the database is seeded (POST /api/seed).</p>
-            </div>
-          ) : services.length === 0 ? (
+          {services.length === 0 ? (
             <div className="text-center py-12">
               <p className="font-body text-muted-foreground">No services found in this category.</p>
-              <Button 
-                variant="link" 
+              <Button
+                variant="link"
                 onClick={() => handleCategoryChange('')}
                 className="mt-2 text-primary"
               >
@@ -137,7 +110,7 @@ const ServicesPage = () => {
             We offer custom décor packages tailored to your unique needs.
           </p>
           <Link to="/contact">
-            <Button 
+            <Button
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8"
               data-testid="services-contact-btn"
             >

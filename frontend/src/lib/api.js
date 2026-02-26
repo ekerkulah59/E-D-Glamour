@@ -1,56 +1,102 @@
-import axios from 'axios';
+// Static data API — no backend required.
+// All functions return data synchronously from local static files,
+// matching the shape { data: ... } so components work without changes.
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-const API_BASE = `${BACKEND_URL}/api`;
+import {
+  services,
+  rentals,
+  testimonials,
+  gallery,
+  faqs,
+  blogPosts,
+  timeSlots,
+} from '../data';
 
-const api = axios.create({
-    baseURL: API_BASE,
-    headers: {
-        'Content-Type': 'application/json',
-    },
-});
+// ─── Services ────────────────────────────────────────────────────────────────
 
-// Services API
 export const servicesApi = {
-    getAll: (category) => api.get('/services', { params: { category } }),
-    getById: (id) => api.get(`/services/${id}`),
+  getAll: (category) => {
+    const filtered = category
+      ? services.filter((s) => s.category === category)
+      : services;
+    return { data: filtered };
+  },
+  getById: (id) => {
+    const service = services.find((s) => s.id === id);
+    return { data: service || null };
+  },
 };
 
-// Rentals API
+// ─── Rentals ─────────────────────────────────────────────────────────────────
+
 export const rentalsApi = {
-    getAll: (category) => api.get('/rentals', { params: { category } }),
-    getById: (id) => api.get(`/rentals/${id}`),
+  getAll: (category) => {
+    const filtered = category
+      ? rentals.filter((r) => r.category === category)
+      : rentals;
+    return { data: filtered };
+  },
+  getById: (id) => {
+    const rental = rentals.find((r) => r.id === id);
+    return { data: rental || null };
+  },
 };
 
-// Testimonials API
+// ─── Testimonials ────────────────────────────────────────────────────────────
+
 export const testimonialsApi = {
-    getAll: (featuredOnly = false) => api.get('/testimonials', { params: { featured_only: featuredOnly } }),
+  getAll: (featuredOnly = false) => {
+    const filtered = featuredOnly
+      ? testimonials.filter((t) => t.is_featured)
+      : testimonials;
+    return { data: filtered };
+  },
 };
 
-// Gallery API
+// ─── Gallery ─────────────────────────────────────────────────────────────────
+
 export const galleryApi = {
-    getAll: (category, featuredOnly = false) => api.get('/gallery', { params: { category, featured_only: featuredOnly } }),
+  getAll: (category, featuredOnly = false) => {
+    let filtered = gallery;
+    if (category) filtered = filtered.filter((g) => g.category === category);
+    if (featuredOnly) filtered = filtered.filter((g) => g.is_featured);
+    return { data: filtered };
+  },
 };
 
-// FAQ API
+// ─── FAQ ─────────────────────────────────────────────────────────────────────
+
 export const faqApi = {
-    getAll: (category) => api.get('/faq', { params: { category } }),
+  getAll: (category) => {
+    const filtered = category
+      ? faqs.filter((f) => f.category === category)
+      : faqs;
+    return { data: [...filtered].sort((a, b) => a.order - b.order) };
+  },
 };
 
-// Blog API
+// ─── Blog ────────────────────────────────────────────────────────────────────
+
 export const blogApi = {
-    getAll: (tag) => api.get('/blog', { params: { tag } }),
-    getBySlug: (slug) => api.get(`/blog/${slug}`),
+  getAll: (tag) => {
+    const published = blogPosts.filter((p) => p.is_published);
+    const filtered = tag
+      ? published.filter((p) => p.tags.includes(tag))
+      : published;
+    return { data: filtered };
+  },
+  getBySlug: (slug) => {
+    const post = blogPosts.find((p) => p.slug === slug && p.is_published);
+    return { data: post || null };
+  },
 };
 
-// Contact/Quote API
+// ─── Contact / Quote (client-side only) ──────────────────────────────────────
+
 export const contactApi = {
-    submitQuote: (data) => api.post('/contact', data),
+  submitQuote: (_data) => {
+    // In a static site there is no backend to send to.
+    // Simulate a successful submission.
+    return { data: { message: 'Quote request received' } };
+  },
 };
-
-// Seed API
-export const seedApi = {
-    seed: () => api.post('/seed'),
-};
-
-export default api;
