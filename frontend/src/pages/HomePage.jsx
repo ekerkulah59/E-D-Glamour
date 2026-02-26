@@ -5,8 +5,7 @@ import { ArrowRight, Sparkles, Users, Calendar, Award, ChevronLeft, ChevronRight
 import { Button } from '../components/ui/button';
 import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
-import LoadingSpinner from '../components/LoadingSpinner';
-import { servicesApi, testimonialsApi, seedApi } from '../lib/api';
+import { servicesApi, testimonialsApi } from '../lib/api';
 
 const HERO_IMAGES = [
   { url: 'https://images.unsplash.com/photo-1768777270907-235286662f98?w=1920', alt: 'Elegant wedding table setting with floral arrangement' },
@@ -16,31 +15,10 @@ const HERO_IMAGES = [
 ];
 
 const HomePage = () => {
-  const [services, setServices] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [heroIndex, setHeroIndex] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Seed the database first
-        await seedApi.seed();
-        
-        const [servicesRes, testimonialsRes] = await Promise.all([
-          servicesApi.getAll(),
-          testimonialsApi.getAll(true),
-        ]);
-        setServices(servicesRes.data.slice(0, 4));
-        setTestimonials(testimonialsRes.data.slice(0, 3));
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const services = servicesApi.getAll().data.slice(0, 4);
+  const testimonials = testimonialsApi.getAll(true).data.slice(0, 3);
 
   // Hero carousel auto-advance
   useEffect(() => {
@@ -139,7 +117,7 @@ const HomePage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-body text-white/80 text-base md:text-lg mb-8 leading-relaxed"
             >
-              Transform your vision into reality with our premium event décor services 
+              Transform your vision into reality with our premium event décor services
               and extensive rental collection. From intimate gatherings to grand celebrations.
             </motion.p>
             <motion.div
@@ -149,7 +127,7 @@ const HomePage = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link to="/services">
-                <Button 
+                <Button
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base"
                   data-testid="hero-explore-services-btn"
                 >
@@ -158,8 +136,8 @@ const HomePage = () => {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-white text-white hover:bg-white hover:text-foreground rounded-full px-8 py-6 text-base"
                   data-testid="hero-get-quote-btn"
                 >
@@ -234,8 +212,8 @@ const HomePage = () => {
                 Our Services
               </motion.h2>
             </div>
-            <Link 
-              to="/services" 
+            <Link
+              to="/services"
               className="font-body text-primary hover:text-primary/80 flex items-center gap-2 mt-4 md:mt-0"
               data-testid="view-all-services-link"
             >
@@ -243,15 +221,11 @@ const HomePage = () => {
             </Link>
           </div>
 
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service, index) => (
-                <ServiceCard key={service.id} service={service} index={index} />
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -272,18 +246,18 @@ const HomePage = () => {
                 Crafting Beautiful Events Since 2015
               </h2>
               <p className="font-body text-muted-foreground leading-relaxed">
-                E&D Glamour Marketing has been transforming ordinary spaces into extraordinary 
-                experiences for over a decade. Our team of creative professionals brings 
-                passion and precision to every project, ensuring your special moments 
+                E&D Glamour Marketing has been transforming ordinary spaces into extraordinary
+                experiences for over a decade. Our team of creative professionals brings
+                passion and precision to every project, ensuring your special moments
                 are as unique as your story.
               </p>
               <p className="font-body text-muted-foreground leading-relaxed">
-                From weddings to corporate galas, birthday celebrations to baby showers, 
-                we offer comprehensive décor services and an extensive rental inventory 
+                From weddings to corporate galas, birthday celebrations to baby showers,
+                we offer comprehensive décor services and an extensive rental inventory
                 to bring your vision to life.
               </p>
               <Link to="/about">
-                <Button 
+                <Button
                   className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
                   data-testid="learn-more-about-btn"
                 >
@@ -335,19 +309,15 @@ const HomePage = () => {
             </motion.h2>
           </div>
 
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
-              ))}
-            </div>
-          )}
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+            ))}
+          </div>
 
           <div className="text-center mt-10">
-            <Link 
-              to="/testimonials" 
+            <Link
+              to="/testimonials"
               className="font-body text-primary hover:text-primary/80 flex items-center justify-center gap-2"
               data-testid="view-all-testimonials-link"
             >
@@ -392,7 +362,7 @@ const HomePage = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Link to="/contact">
-                <Button 
+                <Button
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-semibold"
                   data-testid="cta-get-quote-btn"
                 >
@@ -400,8 +370,8 @@ const HomePage = () => {
                 </Button>
               </Link>
               <Link to="/rentals">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-white text-white hover:bg-white/10 rounded-full px-8 py-6 text-base"
                   data-testid="cta-browse-rentals-btn"
                 >
