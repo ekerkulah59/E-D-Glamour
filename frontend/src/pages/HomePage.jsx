@@ -28,12 +28,12 @@ const HomePage = () => {
     return () => clearInterval(id);
   }, []);
 
-  const stats = [
-    { icon: Calendar, value: '500+', label: 'Events Decorated' },
-    { icon: Users, value: '2000+', label: 'Happy Clients' },
-    { icon: Award, value: '10+', label: 'Years Experience' },
-    { icon: Sparkles, value: '50+', label: 'Rental Items' },
-  ];
+  // const stats = [
+  //   { icon: Calendar, value: '500+', label: 'Events Decorated' },
+  //   { icon: Users, value: '2000+', label: 'Happy Clients' },
+  //   { icon: Award, value: '10+', label: 'Years Experience' },
+  //   { icon: Sparkles, value: '50+', label: 'Rental Items' },
+  // ];
 
   return (
     <div className="min-h-screen" data-testid="home-page">
@@ -166,7 +166,7 @@ const HomePage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted" data-testid="stats-section">
+      {/* <section className="py-16 bg-muted" data-testid="stats-section">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -187,7 +187,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Services */}
       <section className="section-padding" data-testid="featured-services-section">

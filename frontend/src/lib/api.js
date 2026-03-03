@@ -4,13 +4,20 @@
 
 import {
   services,
-  rentals,
+  inventory,
+  categories as rentalCategories,
   testimonials,
   gallery,
   faqs,
   blogPosts,
   timeSlots,
 } from '../data';
+
+// Normalize inventory item for components that expect short_description
+const normalizeRental = (item) => ({
+  ...item,
+  short_description: item.short_description ?? item.shortDescription,
+});
 
 // ─── Services ────────────────────────────────────────────────────────────────
 
@@ -32,14 +39,15 @@ export const servicesApi = {
 export const rentalsApi = {
   getAll: (category) => {
     const filtered = category
-      ? rentals.filter((r) => r.category === category)
-      : rentals;
-    return { data: filtered };
+      ? inventory.filter((r) => r.category === category)
+      : inventory;
+    return { data: filtered.map(normalizeRental) };
   },
   getById: (id) => {
-    const rental = rentals.find((r) => r.id === id);
-    return { data: rental || null };
+    const rental = inventory.find((r) => r.id === id);
+    return { data: rental ? normalizeRental(rental) : null };
   },
+  getCategories: () => ({ data: rentalCategories }),
 };
 
 // ─── Testimonials ────────────────────────────────────────────────────────────

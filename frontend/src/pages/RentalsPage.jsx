@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Filter } from 'lucide-react';
 import RentalCard from '../components/RentalCard';
 import { rentalsApi } from '../lib/api';
-import { rentalCategoryLabels } from '../lib/utils';
 import { Button } from '../components/ui/button';
 
 const RentalsPage = () => {
@@ -11,10 +10,10 @@ const RentalsPage = () => {
   const activeCategory = searchParams.get('category') || '';
 
   const rentalsList = rentalsApi.getAll(activeCategory || undefined).data;
-
+  const categoriesData = rentalsApi.getCategories().data;
   const categories = [
     { value: '', label: 'All Items' },
-    ...Object.entries(rentalCategoryLabels).map(([value, label]) => ({ value, label })),
+    ...categoriesData.map((cat) => ({ value: cat, label: cat })),
   ];
 
   const handleCategoryChange = (category) => {
@@ -33,8 +32,8 @@ const RentalsPage = () => {
             <p className="font-body text-primary text-sm uppercase tracking-widest mb-2">Rental Catalog</p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">Event Rentals</h1>
             <p className="font-body text-muted-foreground text-lg">
-              Browse our premium collection of chairs, tables, photo booths, and catering
-              equipment for your next event.
+              Browse our premium collection of tents, tables, chairs, photo booths,
+              catering equipment, and linens for your next event.
             </p>
           </motion.div>
         </div>

@@ -61,11 +61,11 @@ const ServiceDetailPage = () => {
                 <p className="font-body text-muted-foreground leading-relaxed">{service.description}</p>
               </div>
 
-              <div className="p-6 bg-muted rounded-xl">
+              {/* <div className="p-6 bg-muted rounded-xl">
                 <p className="font-body text-sm text-muted-foreground mb-1">Starting from</p>
                 <p className="font-heading text-3xl font-bold text-foreground" data-testid="service-price">{priceDisplay}</p>
                 <p className="font-body text-sm text-muted-foreground mt-1">{service.price_note}</p>
-              </div>
+              </div> */}
 
               <div>
                 <h3 className="font-heading text-lg font-semibold text-foreground mb-4">What's Included</h3>

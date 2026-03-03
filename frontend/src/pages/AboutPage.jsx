@@ -84,7 +84,7 @@ const AboutPage = () => {
                 className="rounded-2xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-xl">
-                <p className="font-heading text-4xl font-bold">10+</p>
+                <p className="font-heading text-4xl font-bold">3+</p>
                 <p className="font-body text-sm">Years of Excellence</p>
               </div>
             </motion.div>
@@ -195,44 +195,7 @@ const AboutPage = () => {
       </section>
 
       {/* Team */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="font-body text-primary text-sm uppercase tracking-widest mb-2">
-              Our Team
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-              Meet the Creatives
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-                data-testid={`team-member-${index}`}
-              >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-40 h-40 rounded-full mx-auto mb-4 object-cover"
-                />
-                <h3 className="font-heading text-xl font-semibold text-foreground">
-                  {member.name}
-                </h3>
-                <p className="font-body text-sm text-muted-foreground">
-                  {member.role}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* CTA */}
       <section className="py-20 bg-primary">

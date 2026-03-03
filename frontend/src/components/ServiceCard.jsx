@@ -32,12 +32,12 @@ const ServiceCard = ({ service, index = 0 }) => {
               {service.short_description}
             </p>
             <div className="flex items-center justify-between">
-              <span className="font-body text-sm font-medium text-primary">
+              {/* <span className="font-body text-sm font-medium text-primary">
                 {service.starting_price 
                   ? `From ${formatPrice(service.starting_price)}`
                   : service.price_note
                 }
-              </span>
+              </span> */}
               <span className="font-body text-sm text-foreground/60 group-hover:text-primary group-hover:translate-x-1 transition-all">
                 View Details →
               </span>
