@@ -4,6 +4,9 @@ import { formatPrice } from '../lib/utils';
 import { Badge } from '../components/ui/badge';
 
 const RentalCard = ({ rental, index = 0 }) => {
+  const shortDesc = rental.short_description ?? rental.shortDescription;
+  const hasPrice = rental.price_per_day != null;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,36 +20,44 @@ const RentalCard = ({ rental, index = 0 }) => {
           {/* Image */}
           <div className="image-zoom aspect-square relative">
             <img
-              src={rental.images[0]}
+              src={rental.images?.[0]}
               alt={rental.name}
               className="w-full h-full object-cover"
             />
-            {rental.quantity_available < 10 && (
+            {rental.quantity_available != null && rental.quantity_available < 10 && (
               <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground">
                 {rental.quantity_available} left
               </Badge>
             )}
           </div>
-          
+
           {/* Content */}
           <div className="p-5">
             <h3 className="font-heading text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
               {rental.name}
             </h3>
             <p className="font-body text-xs text-muted-foreground mb-3 line-clamp-1">
-              {rental.short_description}
+              {shortDesc}
             </p>
             <div className="flex items-center justify-between">
               <div>
-                <span className="font-body text-lg font-semibold text-foreground">
-                  {formatPrice(rental.price_per_day)}
-                </span>
-                <span className="font-body text-xs text-muted-foreground">/day</span>
+                {hasPrice ? (
+                  <>
+                    <span className="font-body text-lg font-semibold text-foreground">
+                      {formatPrice(rental.price_per_day)}
+                    </span>
+                    <span className="font-body text-xs text-muted-foreground">/day</span>
+                  </>
+                ) : (
+                  <span className="font-body text-sm font-medium text-primary">Get quote</span>
+                )}
               </div>
-              {rental.is_available ? (
-                <span className="font-body text-xs text-green-600 font-medium">In Stock</span>
-              ) : (
-                <span className="font-body text-xs text-red-500 font-medium">Out of Stock</span>
+              {rental.is_available != null && (
+                rental.is_available ? (
+                  <span className="font-body text-xs text-green-600 font-medium">In Stock</span>
+                ) : (
+                  <span className="font-body text-xs text-red-500 font-medium">Out of Stock</span>
+                )
               )}
             </div>
           </div>

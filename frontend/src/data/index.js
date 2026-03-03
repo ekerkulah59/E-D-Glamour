@@ -12,11 +12,13 @@ export const services = [
       "Transform your special day into a breathtaking celebration with our comprehensive wedding décor services. From elegant floral arrangements to stunning table settings, we create magical atmospheres that reflect your unique love story. Our team works closely with you to understand your vision, whether it's a romantic garden wedding, a glamorous ballroom affair, or a rustic barn celebration.",
     short_description:
       "Elegant and romantic wedding decorations tailored to your dream day.",
-    images: [
-      "https://images.unsplash.com/photo-1768777270907-235286662f98?w=800",
-      "https://images.unsplash.com/photo-1761110840708-9d6814876068?w=800",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
-    ],
+      images: [
+        '/wedding.webp',
+        '/weding.webp',
+        '/web.jpg',
+        '/webbbinh.jpg',
+        '/wedding-tent-rentals.jpg'
+      ],
     starting_price: 2500,
     price_note: "Starting from $2,500 - Custom quotes available",
     features: [
@@ -61,8 +63,10 @@ export const services = [
       "Make every birthday unforgettable with our creative party decorations. From whimsical children's parties to elegant milestone celebrations, we bring your vision to life with custom themes, balloon artistry, and stunning backdrops. Our team creates Instagram-worthy setups that make memories last forever.",
     short_description: "Fun and creative birthday decorations for all ages.",
     images: [
-      "https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?w=800",
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800",
+      '/hero-image/andrea-mininni-VLlkOJdzLG0-unsplash.jpg',
+      '/birthday.jpg',
+      '/happy-birthday.webp',
+      
     ],
     starting_price: 500,
     price_note: "Packages starting from $500",
@@ -84,8 +88,10 @@ export const services = [
       "Welcome the little one in style with our charming baby shower decorations. We create sweet and memorable celebrations with gender-reveal setups, nursery-inspired themes, and delicate color palettes that delight guests and honor parents-to-be.",
     short_description: "Sweet and memorable baby shower decorations.",
     images: [
-      "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800",
-      "https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?w=800",
+      '/baby-1.jpg',
+      '/baby-shower2.webp',
+      '/baby2.jpg',
+      
     ],
     starting_price: 400,
     price_note: "Starting from $400",
@@ -131,7 +137,7 @@ export const services = [
       "Congratulate your graduate with festive decorations that celebrate their achievement. From high school to doctorate, we create celebratory environments with school colors, achievement displays, and photo-worthy moments.",
     short_description: "Celebratory decorations for graduation milestones.",
     images: [
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800",
+     
       "https://images.unsplash.com/photo-1627556704302-624286467c65?w=800",
     ],
     starting_price: 450,
@@ -150,273 +156,118 @@ export const services = [
 
 // ─── RENTALS ─────────────────────────────────────────────────────────────────
 
-export const rentals = [
+export const categories = [
+  'Tents',
+  'Tables & Chairs',
+  'Photo Booth',
+  'Decor',
+  'Catering Equipment',
+  'Linens',
+];
+
+export const inventory = [
+  // Tents
   {
-    id: "rent-chiavari-gold",
-    name: "Chiavari Chairs - Gold",
-    category: "chairs",
-    description:
-      "Elegant gold Chiavari chairs perfect for weddings, galas, and upscale events. These classic chairs feature a timeless design with comfortable cushioned seats available in various colors.",
-    short_description: "Classic gold Chiavari chairs for elegant events.",
-    images: [
-      "https://images.unsplash.com/photo-1680169256615-19edb85cb7db?w=800",
-      "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800",
-    ],
-    price_per_day: 8.5,
-    price_per_week: 45.0,
-    specifications: {
-      material: "Resin",
-      color: "Gold",
-      weight_capacity: "400 lbs",
-      cushion_colors: ["White", "Ivory", "Black", "Navy"],
-    },
-    quantity_available: 200,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'tent-001',
+    name: 'Frame Tent - 20x30',
+    category: 'Tents',
+    shortDescription: 'Large 20x30 frame tent for outdoor events up to 150 guests.',
+    description: '20x30 frame tent for weddings, corporate events, and gatherings. No center poles.',
+    images: ['/tent.png', '/tent.png'],
+  },
+ 
+
+  // Tables & Chairs
+  {
+    id: 'chair-001',
+    name: 'Chiavari Chair - Gold',
+    category: 'Tables & Chairs',
+    shortDescription: 'Elegant gold Chiavari chairs for weddings and formal events.',
+    description: 'Gold Chiavari chairs for weddings, galas, and upscale events.',
+    images: ['/EventsProductPictures/TablesChairsBars/chair/gold_chiavari_rental-300x300.jpg', '/EventsProductPictures/TablesChairsBars/Chiavari_Chair_Gold.jpg'],
   },
   {
-    id: "rent-crossback-chairs",
-    name: "Cross-Back Farm Chairs",
-    category: "chairs",
-    description:
-      "Rustic cross-back wooden chairs perfect for farmhouse and vineyard weddings. These sturdy chairs add a touch of natural elegance to any outdoor or barn event.",
-    short_description: "Rustic wooden cross-back chairs for farm-style events.",
-    images: [
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800",
-    ],
-    price_per_day: 10.0,
-    price_per_week: 55.0,
-    specifications: {
-      material: "Beechwood",
-      color: "Natural Wood",
-      weight_capacity: "350 lbs",
-      style: "Rustic",
-    },
-    quantity_available: 150,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'chair-002',
+    name: 'Chiavari Chair - White',
+    category: 'Tables & Chairs',
+    shortDescription: 'Classic white Chiavari chairs for timeless elegance.',
+    description: 'White Chiavari chairs for any event. Clean and versatile.',
+    images: ['/EventsProductPictures/TablesChairsBars/Kids_White_Chiavari_Chair.jpg'],
+  },
+
+  {
+    id: 'table-001',
+    name: 'Round Table',
+    category: 'Tables & Chairs',
+    shortDescription: 'Large 60-inch round tables seating up to 10 guests.',
+    description: '60-inch round tables for banquets. Seats 8–10 guests.',
+    images: ['/white-round.webp', '/white-round-table.webp'],
+  },
+
+  // {
+  //   id: 'table-003',
+  //   name: 'Rectangular Banquet Table',
+  //   category: 'Tables & Chairs',
+  //   shortDescription: 'Long 8-foot rectangular tables for buffet and head tables.',
+  //   description: '8-foot banquet tables for buffets and head tables.',
+  //   images: ['/EventsProductPictures/TablesChairsBars/tables/8ft_rectangular_table_rental-300x300.jpg', '/EventsProductPictures/TablesChairsBars/tables/6ft_rectangular_table_rental-300x300.jpg'],
+  // },
+
+  {
+    id: 'chair-011',
+    name: 'White Folding Chair',
+    category: 'Tables & Chairs',
+    shortDescription: 'Classic white folding chairs for events and gatherings.',
+    description: 'Durable white folding chairs ideal for ceremonies, receptions, and outdoor events.',
+    images: ['/EventsProductPictures/TablesChairsBars/chair/white_folding_chair_rental-300x300.jpg', '/EventsProductPictures/TablesChairsBars/chair/whitepaddedresinchair-300x300.jpg'],
+  },
+
+  {
+    id: 'chair-013',
+    name: 'Plastic Folding Chair',
+    category: 'Tables & Chairs',
+    shortDescription: 'Lightweight white plastic folding chairs for events and gatherings.',
+    description: 'Durable white plastic folding chairs with dark metal frames. Compact when folded for easy storage and transport.',
+    images: ['/plastic-folding.jpg', '/plastic-white-chair.jpg'],
   },
   {
-    id: "rent-banquet-tables",
-    name: "Rectangular Banquet Tables",
-    category: "tables",
-    description:
-      "Classic 8-foot rectangular banquet tables ideal for seated dinners and buffet setups. Sturdy construction with foldable legs for easy setup and transport.",
-    short_description: "8-foot banquet tables for seated dinners.",
-    images: [
-      "https://images.unsplash.com/photo-1603920354140-cab69c15e672?w=800",
-    ],
-    price_per_day: 15.0,
-    price_per_week: 80.0,
-    specifications: {
-      dimensions: '96" x 30"',
-      seats: "8-10 guests",
-      material: "Plastic/Wood top",
-      foldable: true,
-    },
-    quantity_available: 50,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'chair-03',
+    name: 'The Crown Empress Throne',
+    category: 'Tables & Chairs',
+    shortDescription: 'Regal throne chair for weddings, quinceañeras, and royal-themed events.',
+    description: 'A stunning statement throne that adds grandeur to your special day. Perfect for bridal portraits, sweet sixteen, quinceañeras, and royal-themed celebrations.',
+    images: ['/throne-chiard.jpeg', '/throne-chiard.jpeg'],
   },
   {
-    id: "rent-round-tables",
-    name: "Round Tables - 60 inch",
-    category: "tables",
-    description:
-      "60-inch round tables perfect for wedding receptions and gala events. Seats 8-10 guests comfortably and pairs beautifully with floor-length linens.",
-    short_description: "60-inch round tables seating 8-10 guests.",
-    images: [
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-    ],
-    price_per_day: 18.0,
-    price_per_week: 95.0,
-    specifications: {
-      diameter: "60 inches",
-      seats: "8-10 guests",
-      height: "30 inches",
-      foldable: true,
-    },
-    quantity_available: 40,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'chair-015',
+    name: 'Kid Throne Chair',
+    category: 'Tables & Chairs',
+    shortDescription: 'Child-sized throne chair for birthdays, photo ops, and royal-themed parties.',
+    description: 'A smaller throne chair designed for kids. Perfect for birthday parties, quinceañeras, princess themes, and photo opportunities. Makes every little one feel like royalty.',
+    images: ['/kids-throne-chair.jpeg', '/kids-throne-chair.jpeg'],
   },
   {
-    id: "rent-classic-photo-booth",
-    name: "Classic Photo Booth",
-    category: "photo_booths",
-    description:
-      "Our classic enclosed photo booth creates memorable moments with high-quality prints, custom backdrops, and a vast selection of props. Includes attendant, unlimited prints, and digital gallery.",
-    short_description: "Classic enclosed photo booth with props and prints.",
-    images: [
-      "https://images.unsplash.com/photo-1766086893043-d38b06175015?w=800",
-    ],
-    price_per_day: 350.0,
-    price_per_week: null,
-    specifications: {
-      type: "Enclosed booth",
-      prints: "Unlimited 4x6",
-      props: "Included",
-      attendant: "Included",
-      digital_gallery: "Yes",
-    },
-    quantity_available: 3,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'table-007',
+    name: 'White Folding Table',
+    category: 'Tables & Chairs',
+    shortDescription: 'Versatile white folding tables for any event setup.',
+    description: 'White folding tables for buffets, displays, registration, and seating.',
+    images: ['/whit-folding-table.jpg', '/white-table-round.png', '/table.png'],
   },
+
+  // Catering Equipment
+ 
+
+  
+
+  // Photo Booth
   {
-    id: "rent-360-video-booth",
-    name: "360 Video Booth",
-    category: "photo_booths",
-    description:
-      "Create viral-worthy content with our 360-degree video booth. Guests step onto the platform while the camera rotates around them, creating stunning slow-motion videos perfect for social media.",
-    short_description: "360-degree video booth for viral content creation.",
-    images: [
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800",
-    ],
-    price_per_day: 500.0,
-    price_per_week: null,
-    specifications: {
-      platform_size: "39 inches",
-      video_length: "10-15 seconds",
-      sharing: "Instant social media",
-      attendant: "Included",
-    },
-    quantity_available: 2,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-chafing-dish",
-    name: "Chafing Dish Set",
-    category: "catering_equipment",
-    description:
-      "Professional-grade stainless steel chafing dishes for buffet service. Set includes water pan, food pan, lid, and fuel holders. Perfect for keeping food warm during events.",
-    short_description: "Stainless steel chafing dishes for buffet service.",
-    images: [
-      "https://images.unsplash.com/photo-1768725847223-8407142e653a?w=800",
-    ],
-    price_per_day: 25.0,
-    price_per_week: 120.0,
-    specifications: {
-      material: "Stainless Steel",
-      capacity: "8 quarts",
-      includes: ["Water pan", "Food pan", "Lid", "Frame", "Fuel holders"],
-    },
-    quantity_available: 30,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-beverage-dispenser",
-    name: "Beverage Dispenser Tower",
-    category: "catering_equipment",
-    description:
-      "Elegant glass beverage dispensers stacked on a decorative tower. Perfect for lemonade stations, water service, or signature cocktails at your event.",
-    short_description: "Decorative glass beverage dispenser tower.",
-    images: [
-      "https://images.unsplash.com/photo-1527761939622-933c72f6f4e3?w=800",
-    ],
-    price_per_day: 45.0,
-    price_per_week: 200.0,
-    specifications: {
-      dispensers: "3 tier",
-      capacity: "2 gallons each",
-      material: "Glass with metal stand",
-      spigot: "Stainless steel",
-    },
-    quantity_available: 10,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-satin-tablecloth",
-    name: "Satin Tablecloths",
-    category: "linens",
-    description:
-      "Luxurious satin tablecloths available in a wide range of colors. These elegant linens add a touch of sophistication to any table setting, perfect for weddings, galas, and upscale events.",
-    short_description: "Elegant satin tablecloths in multiple colors.",
-    images: [
-      "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=800",
-    ],
-    price_per_day: 12.0,
-    price_per_week: 60.0,
-    specifications: {
-      material: "Premium Satin",
-      sizes: ["90x132", "120 Round", "90x156"],
-      colors: ["White", "Ivory", "Gold", "Navy", "Burgundy", "Blush"],
-      care: "Dry clean only",
-    },
-    quantity_available: 100,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-string-lights",
-    name: "Edison String Lights",
-    category: "lighting",
-    description:
-      "Warm Edison-style string lights perfect for creating a romantic ambiance at outdoor and indoor events. Each strand features vintage-style bulbs that cast a beautiful warm glow.",
-    short_description: "Vintage Edison string lights for warm ambiance.",
-    images: [
-      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800",
-    ],
-    price_per_day: 35.0,
-    price_per_week: 175.0,
-    specifications: {
-      length: "100 feet per strand",
-      bulb_type: "Edison LED",
-      color_temperature: "2700K warm white",
-      indoor_outdoor: "Both",
-      dimmable: true,
-    },
-    quantity_available: 20,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-uplighting",
-    name: "LED Uplighting Package",
-    category: "lighting",
-    description:
-      "Transform any venue with our wireless LED uplighting package. Fully customizable colors to match your event theme, these lights create dramatic effects on walls, columns, and architectural features.",
-    short_description: "Wireless LED uplighting in customizable colors.",
-    images: [
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800",
-    ],
-    price_per_day: 20.0,
-    price_per_week: 100.0,
-    specifications: {
-      type: "Wireless LED",
-      colors: "16 million (RGB)",
-      battery_life: "12+ hours",
-      units_per_package: 10,
-      remote_controlled: true,
-    },
-    quantity_available: 50,
-    min_rental_days: 1,
-    is_available: true,
-  },
-  {
-    id: "rent-lace-runner",
-    name: "Lace Table Runners",
-    category: "linens",
-    description:
-      "Delicate lace table runners that add a vintage, romantic touch to your event tables. Available in ivory and white, these runners pair beautifully with any tablecloth.",
-    short_description: "Vintage lace table runners in ivory and white.",
-    images: [
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-    ],
-    price_per_day: 5.0,
-    price_per_week: 25.0,
-    specifications: {
-      material: "Premium Lace",
-      dimensions: '14" x 108"',
-      colors: ["Ivory", "White"],
-      style: "Vintage Floral Pattern",
-    },
-    quantity_available: 80,
-    min_rental_days: 1,
-    is_available: true,
+    id: 'photo-book-360',
+    name: '360 Photo Booth',
+    category: 'Photo Booth',
+    shortDescription: '360-degree photo booth for viral slow-motion videos.',
+    description: '360-degree photo booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. Guests love the shareable viral content.',
+    images: ['/360-ph.jpeg'],
   },
 ];
 
