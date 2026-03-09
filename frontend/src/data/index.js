@@ -63,9 +63,9 @@ export const services = [
       "Make every birthday unforgettable with our creative party decorations. From whimsical children's parties to elegant milestone celebrations, we bring your vision to life with custom themes, balloon artistry, and stunning backdrops. Our team creates Instagram-worthy setups that make memories last forever.",
     short_description: "Fun and creative birthday decorations for all ages.",
     images: [
-      '/hero-image/andrea-mininni-VLlkOJdzLG0-unsplash.jpg',
-      '/birthday.jpg',
-      '/happy-birthday.webp',
+      '/gallary-birthday.jpeg',
+      '/gallary-54.jpeg',
+      '/gallary-454.jpeg',
       
     ],
     starting_price: 500,
@@ -138,7 +138,10 @@ export const services = [
     short_description: "Celebratory decorations for graduation milestones.",
     images: [
      
-      "https://images.unsplash.com/photo-1627556704302-624286467c65?w=800",
+      
+      "/gallary-2024-r.jpeg",
+      "/gallary-2024.jpeg",
+      "/gallary000.jpeg",
     ],
     starting_price: 450,
     price_note: "Starting from $450",
@@ -160,9 +163,9 @@ export const categories = [
   'Tents',
   'Tables & Chairs',
   'Photo Booth',
-  'Decor',
-  'Catering Equipment',
-  'Linens',
+  // 'Decor',
+  // 'Catering Equipment',
+  // 'Linens',
 ];
 
 export const inventory = [
@@ -193,6 +196,14 @@ export const inventory = [
     shortDescription: 'Classic white Chiavari chairs for timeless elegance.',
     description: 'White Chiavari chairs for any event. Clean and versatile.',
     images: ['/EventsProductPictures/TablesChairsBars/Kids_White_Chiavari_Chair.jpg'],
+  },
+  {
+    id: 'chair-003',
+    name: 'Chiavari Chair - Pink',
+    category: 'Tables & Chairs',
+    shortDescription: 'Elegant pink Chiavari chairs for weddings and formal events.',
+    description: 'Pink Chiavari chairs for weddings, galas, and upscale events.',
+    images: ['/pink-chover-chair.jpeg'],
   },
 
   {
@@ -269,6 +280,14 @@ export const inventory = [
     description: '360-degree photo booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. Guests love the shareable viral content.',
     images: ['/360-ph.jpeg'],
   },
+  {
+    id: 'photo-book-digital',
+    name: 'Digital Photo Booth',
+    category: 'Photo Booth',
+    shortDescription: 'Digital Photo Booth for viral slow-motion videos.',
+    description: 'Digital Photo Booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. Guests love the shareable viral content.',
+    images: ['/photoboot1.jpeg'],
+  }
 ];
 
 // ─── TESTIMONIALS ────────────────────────────────────────────────────────────
@@ -330,56 +349,38 @@ export const testimonials = [
 ];
 
 // ─── GALLERY ─────────────────────────────────────────────────────────────────
+// All images and videos from the public folder; videos are muted by default in the UI.
 
 export const gallery = [
-  {
-    id: "gal-1",
-    url: "https://images.unsplash.com/photo-1768777270907-235286662f98?w=800",
-    title: "Elegant Wedding Reception",
-    category: "wedding",
-    event_type: "Wedding",
-    is_featured: true,
-  },
-  {
-    id: "gal-2",
-    url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
-    title: "Romantic Garden Wedding",
-    category: "wedding",
-    event_type: "Wedding",
-    is_featured: true,
-  },
-  {
-    id: "gal-3",
-    url: "https://images.unsplash.com/photo-1758285477208-2300ae0c668d?w=800",
-    title: "Corporate Atrium Event",
-    category: "corporate",
-    event_type: "Corporate",
-    is_featured: true,
-  },
-  {
-    id: "gal-4",
-    url: "https://images.unsplash.com/photo-1758870041148-31d28fdf34d9?w=800",
-    title: "Birthday Balloon Display",
-    category: "birthday",
-    event_type: "Birthday",
-    is_featured: true,
-  },
-  {
-    id: "gal-5",
-    url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800",
-    title: "Gala Table Setting",
-    category: "corporate",
-    event_type: "Gala",
-    is_featured: false,
-  },
-  {
-    id: "gal-6",
-    url: "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=800",
-    title: "Sweet Baby Shower",
-    category: "baby_shower",
-    event_type: "Baby Shower",
-    is_featured: false,
-  },
+  // Images (public root)
+  
+  { id: "gal-gallary-54", url: "/gallary-54.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  
+  { id: "gal-gallary-11", url: "/gallary-11.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-gallary-64", url: "/gallary-64.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-photoboot1", url: "/photoboot1.jpeg", title: "Photo Booth", category: "birthday", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-gallary-birthday", url: "/gallary-birthday.jpeg", title: "Birthday Gallery", category: "birthday", event_type: "Birthday", is_featured: true, type: "image" },
+  { id: "gal-gallary-454", url: "/gallary-454.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-gallary-33", url: "/gallary-33.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-gallary-343", url: "/gallary-343.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  
+  //{ id: "gal-throne-chair", url: "/throne-chair.jpeg", title: "Throne Chair", category: "corporate", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-360-ph", url: "/360-ph.jpeg", title: "360 Photo", category: "corporate", event_type: "Event", is_featured: false, type: "image" },
+  
+  { id: "gal-gallary-bithday-e", url: "/gallary-bithday-e.jpeg", title: "Birthday Event", category: "birthday", event_type: "Birthday", is_featured: false, type: "image" },
+  { id: "gal-gallary-2024", url: "/gallary-2024.jpeg", title: "Gallery 2024", category: "wedding", event_type: "Event", is_featured: true, type: "image" },
+  { id: "gal-gallary-2024-r", url: "/gallary-2024-r.jpeg", title: "Gallery 2024", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+ // { id: "gal-throne-chiard", url: "/throne-chiard.jpeg", title: "Throne Chair", category: "corporate", event_type: "Event", is_featured: false, type: "image" },
+  { id: "gal-gallary000", url: "/gallary000.jpeg", title: "Gallery", category: "wedding", event_type: "Event", is_featured: false, type: "image" },
+  // Images (EventsProductPictures subfolders)
+  
+  // Videos (public root) — displayed muted by default in the gallery
+  { id: "gal-v-photoboot", url: "/photoboot-v1.mp4", title: "Photo Booth", category: "birthday", event_type: "Video", is_featured: true, type: "video" },
+  { id: "gal-v1", url: "/gallary-v1.mp4", title: "Gallery Video", category: "wedding", event_type: "Video", is_featured: false, type: "video" },
+  { id: "gal-v2", url: "/gallary-v2.mp4", title: "Gallery Video", category: "wedding", event_type: "Video", is_featured: false, type: "video" },
+  { id: "gal-v3", url: "/gallary-v3.mp4", title: "Gallery Video", category: "wedding", event_type: "Video", is_featured: false, type: "video" },
+  { id: "gal-v4", url: "/gallary-v4.mp4", title: "Gallery Video", category: "wedding", event_type: "Video", is_featured: false, type: "video" },
+  { id: "gal-v5", url: "/gallary-v5.mp4", title: "Gallery Video", category: "wedding", event_type: "Video", is_featured: false, type: "video" },
 ];
 
 // ─── FAQ ─────────────────────────────────────────────────────────────────────
