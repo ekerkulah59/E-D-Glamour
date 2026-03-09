@@ -7,11 +7,9 @@ import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
 import { servicesApi, testimonialsApi } from '../lib/api';
 
-const HERO_IMAGES = [
-  { url: 'https://images.unsplash.com/photo-1768777270907-235286662f98?w=1920', alt: 'Elegant wedding table setting with floral arrangement' },
-  { url: 'https://images.unsplash.com/photo-1768777270882-9f74939fee50?w=1920', alt: 'Sunset wedding reception overlooking city' },
-  { url: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920', alt: 'Elegant wedding decoration' },
-  { url: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920', alt: 'Wedding venue with lights' },
+const HERO_VIDEOS = [
+  { src: '/gallary-v1.mp4', alt: 'E&D Glamour event highlights' },
+  { src: '/gallary-v4.mp4', alt: 'E&D Glamour event moments' },
 ];
 
 const HomePage = () => {
@@ -20,11 +18,11 @@ const HomePage = () => {
   const services = servicesApi.getAll().data.slice(0, 4);
   const testimonials = testimonialsApi.getAll(true).data.slice(0, 3);
 
-  // Hero carousel auto-advance
+  // Hero carousel auto-advance (10 seconds per video)
   useEffect(() => {
     const id = setInterval(() => {
-      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
-    }, 5000);
+      setHeroIndex((i) => (i + 1) % HERO_VIDEOS.length);
+    }, 10000);
     return () => clearInterval(id);
   }, []);
 
@@ -39,7 +37,7 @@ const HomePage = () => {
     <div className="min-h-screen" data-testid="home-page">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden" data-testid="hero-section">
-        {/* Background Image Carousel */}
+        {/* Background Video Carousel */}
         <div className="absolute inset-0">
           <AnimatePresence initial={false}>
             <motion.div
@@ -50,10 +48,14 @@ const HomePage = () => {
               transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="absolute inset-0"
             >
-              <img
-                src={HERO_IMAGES[heroIndex].url}
-                alt={HERO_IMAGES[heroIndex].alt}
+              <video
+                src={HERO_VIDEOS[heroIndex].src}
                 className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label={HERO_VIDEOS[heroIndex].alt}
               />
             </motion.div>
           </AnimatePresence>
@@ -63,7 +65,7 @@ const HomePage = () => {
         {/* Carousel controls */}
         <button
           type="button"
-          onClick={() => setHeroIndex((i) => (i - 1 + HERO_IMAGES.length) % HERO_IMAGES.length)}
+          onClick={() => setHeroIndex((i) => (i - 1 + HERO_VIDEOS.length) % HERO_VIDEOS.length)}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           aria-label="Previous slide"
         >
@@ -71,14 +73,14 @@ const HomePage = () => {
         </button>
         <button
           type="button"
-          onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}
+          onClick={() => setHeroIndex((i) => (i + 1) % HERO_VIDEOS.length)}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           aria-label="Next slide"
         >
           <ChevronRight className="h-8 w-8" />
         </button>
         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {HERO_IMAGES.map((_, i) => (
+          {HERO_VIDEOS.map((_, i) => (
             <button
               key={i}
               type="button"
@@ -243,7 +245,7 @@ const HomePage = () => {
                 About Us
               </p>
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-                Crafting Beautiful Events Since 2015
+                Crafting Beautiful Events Since 2021
               </h2>
               <p className="font-body text-muted-foreground leading-relaxed">
                 E&D Glamour Marketing has been transforming ordinary spaces into extraordinary
@@ -272,12 +274,12 @@ const HomePage = () => {
               className="grid grid-cols-2 gap-4"
             >
               <img
-                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600"
+                src="/gallary-2024-r.jpeg"
                 alt="Wedding decoration"
                 className="rounded-lg w-full h-64 object-cover"
               />
               <img
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600"
+                src="/gallary-birthday.jpeg"
                 alt="Corporate event"
                 className="rounded-lg w-full h-64 object-cover mt-8"
               />

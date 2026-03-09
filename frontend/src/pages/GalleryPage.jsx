@@ -7,7 +7,7 @@ import { Dialog, DialogContent } from '../components/ui/dialog';
 
 const GalleryPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const allImages = galleryApi.getAll().data;
   const filteredImages = activeFilter === 'all'
@@ -61,21 +61,34 @@ const GalleryPage = () => {
           ) : (
             <div className="gallery-grid">
               {filteredImages.map((image, index) => (
-                <GalleryImage key={image.id} image={image} index={index} onClick={setSelectedImage} />
+                <GalleryImage key={image.id} image={image} index={index} onClick={setSelectedItem} />
               ))}
             </div>
           )}
         </div>
       </section>
 
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+      <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
         <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
-          {selectedImage && (
+          {selectedItem && (
             <div className="relative">
-              <img src={selectedImage.url} alt={selectedImage.title} className="w-full h-auto rounded-lg" />
+              {selectedItem.type === 'video' ? (
+                <video
+                  src={selectedItem.url}
+                  muted
+                  playsInline
+                  loop
+                  autoPlay
+                  controls
+                  className="w-full h-auto rounded-lg"
+                  aria-label={selectedItem.title}
+                />
+              ) : (
+                <img src={selectedItem.url} alt={selectedItem.title} className="w-full h-auto rounded-lg" />
+              )}
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
-                <p className="font-body text-white font-medium">{selectedImage.title}</p>
-                <p className="font-body text-white/70 text-sm">{selectedImage.event_type}</p>
+                <p className="font-body text-white font-medium">{selectedItem.title}</p>
+                <p className="font-body text-white/70 text-sm">{selectedItem.event_type}</p>
               </div>
             </div>
           )}

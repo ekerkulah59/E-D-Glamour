@@ -27,23 +27,23 @@ const AboutPage = () => {
     },
   ];
 
-  const team = [
-    {
-      name: 'Sarah Mitchell',
-      role: 'Founder & Creative Director',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Operations Manager',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Lead Designer',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
-    },
-  ];
+  // const team = [
+  //   {
+  //     name: 'Sarah Mitchell',
+  //     role: 'Founder & Creative Director',
+  //     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
+  //   },
+  //   {
+  //     name: 'Michael Chen',
+  //     role: 'Operations Manager',
+  //     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
+  //   },
+  //   {
+  //     name: 'Emily Rodriguez',
+  //     role: 'Lead Designer',
+  //     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen pt-24" data-testid="about-page">
@@ -140,22 +140,22 @@ const AboutPage = () => {
               className="grid grid-cols-2 gap-4"
             >
               <img
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600"
+                src="/gallary-2024-r.jpeg"
                 alt="Corporate event"
                 className="rounded-xl h-48 object-cover"
               />
               <img
-                src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600"
+                src="/gallary-birthday.jpeg"
                 alt="Birthday party"
                 className="rounded-xl h-48 object-cover mt-8"
               />
               <img
-                src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600"
+                src="/gallary-343.jpeg"
                 alt="Gala event"
                 className="rounded-xl h-48 object-cover"
               />
               <img
-                src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600"
+                src="/gallary-2024.jpeg"
                 alt="Baby shower"
                 className="rounded-xl h-48 object-cover mt-8"
               />
