@@ -70,24 +70,36 @@ const RentalDetailPage = () => {
                 <p className="font-body text-muted-foreground leading-relaxed">{rental.description}</p>
               </div>
 
-              {(rental.price_per_day != null || rental.price_per_week != null) && (
+              {(rental.price_per_day != null || rental.price_per_week != null || rental.price_note) && (
                 <div className="p-6 bg-muted rounded-xl">
-                  <div className="grid grid-cols-2 gap-6">
-                    {rental.price_per_day != null && (
-                      <div>
-                        <p className="font-body text-sm text-muted-foreground mb-1">Daily Rate</p>
-                        <p className="font-heading text-3xl font-bold text-foreground" data-testid="rental-price-daily">{formatPrice(rental.price_per_day)}</p>
+                  {rental.price_note && !rental.price_per_day && !rental.price_per_week ? (
+                    <div>
+                      <p className="font-body text-sm text-muted-foreground mb-1">Pricing</p>
+                      <p className="font-heading text-xl font-bold text-foreground" data-testid="rental-price-note">{rental.price_note}</p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="grid grid-cols-2 gap-6">
+                        {rental.price_per_day != null && (
+                          <div>
+                            <p className="font-body text-sm text-muted-foreground mb-1">Daily Rate</p>
+                            <p className="font-heading text-3xl font-bold text-foreground" data-testid="rental-price-daily">{formatPrice(rental.price_per_day)}</p>
+                          </div>
+                        )}
+                        {rental.price_per_week != null && (
+                          <div>
+                            <p className="font-body text-sm text-muted-foreground mb-1">Weekly Rate</p>
+                            <p className="font-heading text-2xl font-bold text-primary" data-testid="rental-price-weekly">{formatPrice(rental.price_per_week)}</p>
+                          </div>
+                        )}
                       </div>
-                    )}
-                    {rental.price_per_week != null && (
-                      <div>
-                        <p className="font-body text-sm text-muted-foreground mb-1">Weekly Rate</p>
-                        <p className="font-heading text-2xl font-bold text-primary" data-testid="rental-price-weekly">{formatPrice(rental.price_per_week)}</p>
-                      </div>
-                    )}
-                  </div>
-                  {rental.min_rental_days != null && (
-                    <p className="font-body text-xs text-muted-foreground mt-3">Minimum rental: {rental.min_rental_days} day{rental.min_rental_days > 1 ? 's' : ''}</p>
+                      {rental.price_note && (
+                        <p className="font-body text-sm text-muted-foreground mt-3">{rental.price_note}</p>
+                      )}
+                      {rental.min_rental_days != null && (
+                        <p className="font-body text-xs text-muted-foreground mt-3">Minimum rental: {rental.min_rental_days} day{rental.min_rental_days > 1 ? 's' : ''}</p>
+                      )}
+                    </>
                   )}
                 </div>
               )}

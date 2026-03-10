@@ -12,7 +12,7 @@ const ContactItem = ({ icon: Icon, title, line1, line2 }) => (
         {title}
       </h3>
       <p className="font-body text-sm text-muted-foreground">{line1}</p>
-      <p className="font-body text-sm text-muted-foreground">{line2}</p>
+      {line2 ? <p className="font-body text-sm text-muted-foreground">{line2}</p> : null}
     </div>
   </div>
 );
@@ -62,20 +62,20 @@ const ContactPage = () => {
               <ContactItem 
                 icon={MapPin}
                 title="Visit Us"
-                line1="123 Event Lane, Suite 100"
-                line2="Los Angeles, CA 90001"
+                line1="Wilmington, DE"
+                line2=""
               />
               <ContactItem 
                 icon={Phone}
                 title="Call Us"
-                line1="(123) 456-7890"
+                line1="(302) 747-0611"
                 line2="Mon-Fri: 9am - 6pm"
               />
               <ContactItem 
                 icon={Mail}
                 title="Email Us"
                 line1="hello@edglamourmarketing.com"
-                line2="quotes@edglamourmarketing.com"
+                line2=""
               />
               <ContactItem 
                 icon={Clock}
@@ -109,10 +109,7 @@ const ContactPage = () => {
           <div className="text-center">
             <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
             <p className="font-heading text-xl font-semibold text-foreground">
-              123 Event Lane, Suite 100
-            </p>
-            <p className="font-body text-muted-foreground">
-              Los Angeles, CA 90001
+              Wilmington, DE
             </p>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { Badge } from '../components/ui/badge';
 const RentalCard = ({ rental, index = 0 }) => {
   const shortDesc = rental.short_description ?? rental.shortDescription;
   const hasPrice = rental.price_per_day != null;
+  const priceNote = rental.price_note;
 
   return (
     <motion.div
@@ -48,6 +49,8 @@ const RentalCard = ({ rental, index = 0 }) => {
                     </span>
                     <span className="font-body text-xs text-muted-foreground">/day</span>
                   </>
+                ) : priceNote ? (
+                  <span className="font-body text-sm font-medium text-foreground">{priceNote}</span>
                 ) : (
                   <span className="font-body text-sm font-medium text-primary">Get quote</span>
                 )}
