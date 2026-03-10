@@ -46,6 +46,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 { name: 'Services', path: '/services' },
+                { name: 'Packages', path: '/packages' },
                 { name: 'Rentals', path: '/rentals' },
                 { name: 'Gallery', path: '/gallery' },
                 // { name: 'Testimonials', path: '/testimonials' },
@@ -74,6 +75,7 @@ const Footer = () => {
                 { name: 'Birthday Parties', path: '/services?category=birthday' },
                 { name: 'Baby Showers', path: '/services?category=baby_shower' },
                 { name: 'Anniversaries', path: '/services?category=anniversary' },
+                { name: 'Graduations', path: '/services?category=graduation' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link 
@@ -94,18 +96,17 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent mt-0.5 flex-shrink-0" />
                 <span className="font-body text-sm text-white/70">
-                  123 Event Lane, Suite 100<br />
-                  Wilmington, DE 19801
+                  Wilmington, DE
                 </span>
               </li>
               <li>
                 <a 
-                  href="tel:+11234567890" 
+                  href="tel:+13027470611" 
                   className="flex items-center gap-3 font-body text-sm text-white/70 hover:text-white transition-colors"
                   data-testid="footer-phone"
                 >
                   <Phone size={18} className="text-accent flex-shrink-0" />
-                  (123) 456-7890
+                  (302) 747-0611
                 </a>
               </li>
               <li>

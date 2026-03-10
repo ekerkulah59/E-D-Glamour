@@ -18,6 +18,7 @@ import BlogDetailPage from "./pages/BlogDetailPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import BookingPage from "./pages/BookingPage";
+import PackagesPage from "./pages/PackagesPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/services/:id" element={<ServiceDetailPage />} />
             <Route path="/rentals" element={<RentalsPage />} />
             <Route path="/rentals/:id" element={<RentalDetailPage />} />
+            <Route path="/packages" element={<PackagesPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/faq" element={<FAQPage />} />

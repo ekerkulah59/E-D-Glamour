@@ -11,6 +11,8 @@ import {
   faqs,
   blogPosts,
   timeSlots,
+  packages,
+  contact,
 } from '../data';
 
 // Normalize inventory item for components that expect short_description
@@ -49,6 +51,14 @@ export const rentalsApi = {
   },
   getCategories: () => ({ data: rentalCategories }),
 };
+
+// ─── Packages ─────────────────────────────────────────────────────────────────
+
+export const packagesApi = {
+  getAll: () => ({ data: [...packages].sort((a, b) => a.order - b.order) }),
+};
+
+export { contact };
 
 // ─── Testimonials ────────────────────────────────────────────────────────────
 

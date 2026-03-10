@@ -1,6 +1,76 @@
 // Static data for the E&D Glamour Marketing event rental website
 // All data is hardcoded — no backend or database required.
 
+// ─── CONTACT (from official doc) ─────────────────────────────────────────────
+
+export const contact = {
+  phone: '3027470611',
+  phoneFormatted: '(302) 747-0611',
+  email: 'hello@edglamourmarketing.com',
+  address: { line1: 'Wilmington, DE', line2: '' },
+};
+
+// ─── PACKAGES (three-tier structure from official doc) ────────────────────────
+
+export const packages = [
+  {
+    id: 'pkg-tier-1',
+    name: 'Tier 1',
+    guestRange: 'Up to 50 guests',
+    priceRange: [1500, 2500],
+    priceLabel: '$1,500 – $2,500',
+    targetDescription: 'Smaller events or couples/hosts who want help with the day itself',
+    inclusions: [
+      'Initial discovery call and basic planning outline',
+      'Up to 2 pre-event meetings or calls',
+      'Creation of a master timeline and floor plan',
+      'Table cloth, center pieces and (1) backdrop, plate chargers',
+      'Easel stand and picture',
+      'On-site coordination for the day of the event (limited staffing)',
+    ],
+    order: 1,
+  },
+  {
+    id: 'pkg-tier-2',
+    name: 'Tier 2',
+    guestRange: 'Up to 100 guests',
+    priceRange: [3000, 5000],
+    priceLabel: '$3,000 – $5,000',
+    targetDescription: 'Events needing more structure and vendor coordination',
+    inclusions: [
+      'Everything in Tier 1',
+      'Chiavari chairs, throne chair',
+      '8 planning meetings or calls',
+      'Detailed budget tracking and updates',
+      'Design concept and décor guidance',
+      'Picture poster of client',
+      'Floor plan and run-of-show development',
+      'Day-of coordination (1–2 staff) plus venue/vendor coordination leading up to the event',
+    ],
+    order: 2,
+  },
+  {
+    id: 'pkg-tier-3',
+    name: 'Tier 3',
+    guestRange: 'Up to 200 guests',
+    priceRange: [5500, 15000],
+    priceLabel: '$5,500 – $15,000',
+    targetDescription: 'Larger or more complex events needing end-to-end management',
+    inclusions: [
+      'Everything from Tier 1 & 2',
+      'Photo booth and 3 customer poster boards',
+      'Plates, napkins, and silverware (price varies by type)',
+      'Unlimited planning meetings/calls',
+      'Comprehensive budget management with ongoing approvals',
+      'Design development from concept to execution (themes, décor, branding)',
+      'Site visits, production coordination, and floor plan finalization',
+      'Rehearsal coordination (if applicable) and day-of management (full on-site team)',
+      'Enhanced post-event reporting and ongoing client support',
+    ],
+    order: 3,
+  },
+];
+
 // ─── SERVICES ────────────────────────────────────────────────────────────────
 
 export const services = [
@@ -186,24 +256,27 @@ export const inventory = [
     name: 'Chiavari Chair - Gold',
     category: 'Tables & Chairs',
     shortDescription: 'Elegant gold Chiavari chairs for weddings and formal events.',
-    description: 'Gold Chiavari chairs for weddings, galas, and upscale events.',
+    description: 'Gold Chiavari chairs for weddings, galas, and upscale events. $6.50/chair with customer pickup and drop-off; $6.75/chair plus $50 for planner delivery and pickup.',
     images: ['/EventsProductPictures/TablesChairsBars/chair/gold_chiavari_rental-300x300.jpg', '/EventsProductPictures/TablesChairsBars/Chiavari_Chair_Gold.jpg'],
+    price_note: 'From $6.50/chair (pickup) or $6.75/chair + $50 delivery',
   },
   {
     id: 'chair-002',
     name: 'Chiavari Chair - White',
     category: 'Tables & Chairs',
     shortDescription: 'Classic white Chiavari chairs for timeless elegance.',
-    description: 'White Chiavari chairs for any event. Clean and versatile.',
+    description: 'White Chiavari chairs for any event. Clean and versatile. $6.50/chair with customer pickup and drop-off; $6.75/chair plus $50 for planner delivery and pickup.',
     images: ['/EventsProductPictures/TablesChairsBars/Kids_White_Chiavari_Chair.jpg'],
+    price_note: 'From $6.50/chair (pickup) or $6.75/chair + $50 delivery',
   },
   {
     id: 'chair-003',
     name: 'Chiavari Chair - Pink',
     category: 'Tables & Chairs',
     shortDescription: 'Elegant pink Chiavari chairs for weddings and formal events.',
-    description: 'Pink Chiavari chairs for weddings, galas, and upscale events.',
+    description: 'Pink Chiavari chairs for weddings, galas, and upscale events. $6.50/chair with customer pickup and drop-off; $6.75/chair plus $50 for planner delivery and pickup.',
     images: ['/pink-chover-chair.jpeg'],
+    price_note: 'From $6.50/chair (pickup) or $6.75/chair + $50 delivery',
   },
 
   {
@@ -246,16 +319,27 @@ export const inventory = [
     name: 'The Crown Empress Throne',
     category: 'Tables & Chairs',
     shortDescription: 'Regal throne chair for weddings, quinceañeras, and royal-themed events.',
-    description: 'A stunning statement throne that adds grandeur to your special day. Perfect for bridal portraits, sweet sixteen, quinceañeras, and royal-themed celebrations.',
+    description: 'A stunning statement throne that adds grandeur to your special day. Perfect for bridal portraits, sweet sixteen, quinceañeras, and royal-themed celebrations. $125 with customer pickup/drop-off; $130 plus $50 for planner delivery and pickup.',
     images: ['/throne-chiard.jpeg', '/throne-chiard.jpeg'],
+    price_note: '$125 (pickup) or $130 + $50 delivery',
   },
   {
     id: 'chair-015',
     name: 'Kid Throne Chair',
     category: 'Tables & Chairs',
     shortDescription: 'Child-sized throne chair for birthdays, photo ops, and royal-themed parties.',
-    description: 'A smaller throne chair designed for kids. Perfect for birthday parties, quinceañeras, princess themes, and photo opportunities. Makes every little one feel like royalty.',
+    description: 'A smaller throne chair designed for kids. Perfect for birthday parties, quinceañeras, princess themes, and photo opportunities. $50 with customer pickup/drop-off; $60 for planner delivery and pickup.',
     images: ['/kids-throne-chair.jpeg', '/kids-throne-chair.jpeg'],
+    price_note: '$50 (pickup) or $60 with delivery',
+  },
+  {
+    id: 'chair-kids-chiavari',
+    name: 'Kids Chiavari Chair',
+    category: 'Tables & Chairs',
+    shortDescription: 'Child-sized Chiavari chairs for kids tables and photo ops.',
+    description: 'Kids Chiavari chairs for children\'s tables and themed events. $2.50/chair with customer pickup and drop-off; $3.00/chair for planner delivery and pickup.',
+    images: ['/EventsProductPictures/TablesChairsBars/Kids_White_Chiavari_Chair.jpg'],
+    price_note: 'From $2.50/chair (pickup) or $3.00/chair with delivery',
   },
   {
     id: 'table-007',
@@ -277,8 +361,9 @@ export const inventory = [
     name: '360 Photo Booth',
     category: 'Photo Booth',
     shortDescription: '360-degree photo booth for viral slow-motion videos.',
-    description: '360-degree photo booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. Guests love the shareable viral content.',
+    description: '360-degree photo booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. $125 per hour. Additional backdrops available (negotiable).',
     images: ['/360-ph.jpeg'],
+    price_note: '$125/hour',
   },
   {
     id: 'photo-book-digital',
@@ -406,7 +491,7 @@ export const faqs = [
     id: "faq-3",
     question: "Can I customize the décor to match my theme?",
     answer:
-      "Absolutely! We specialize in custom designs tailored to your vision. During our consultation, we'll discuss colors, themes, and specific elements you'd like to incorporate.",
+      "Absolutely! We specialize in custom designs tailored to your vision. During our discovery call, we'll discuss colors, themes, and specific elements you'd like to incorporate. Design development from concept to execution is included in our higher-tier packages.",
     category: "services",
     order: 3,
   },
@@ -414,7 +499,7 @@ export const faqs = [
     id: "faq-4",
     question: "What is your rental policy?",
     answer:
-      "Rentals include delivery and pickup within our service area. A security deposit is required at booking, which is refunded upon return of items in good condition. Minimum rental period is typically 1 day.",
+      "Rentals include pickup and drop-off options: customer pickup/drop-off at a lower rate, or planner delivery and pickup for an additional fee (e.g. $50 for chair deliveries). A security deposit may be required; minimum rental period is typically 1 day. Contact us for exact terms.",
     category: "rentals",
     order: 4,
   },
@@ -422,7 +507,7 @@ export const faqs = [
     id: "faq-5",
     question: "Do you travel for destination events?",
     answer:
-      "Yes, we travel for destination weddings and events! Travel fees apply based on distance. Contact us with your location for a custom quote.",
+      "Yes, we travel for destination weddings and events! Final prices depend on factors like guest count, venue complexity, travel, number of event days, and staff requirements. Contact us with your location for a custom quote.",
     category: "booking",
     order: 5,
   },
@@ -438,15 +523,15 @@ export const faqs = [
     id: "faq-7",
     question: "How do I get a quote?",
     answer:
-      "Simply fill out our contact form with details about your event, and we'll respond within 24-48 hours with a customized quote. You can also call us directly for immediate assistance.",
+      "Fill out our contact form with details about your event, or call us at (302) 747-0611. We'll respond within 24-48 hours with a customized quote. All prices are ballpark estimates and can be refined during a discovery call based on your location, date, and exact scope.",
     category: "booking",
     order: 7,
   },
   {
     id: "faq-8",
-    question: "What payment methods do you accept?",
+    question: "What are your payment terms?",
     answer:
-      "We accept all major credit cards, bank transfers, and checks. A 50% deposit is required to secure your booking, with the balance due one week before your event.",
+      "Retainer: 10–50% is due at contract signing to secure your date and begin planning. Final payment: 50–100% is due 7–14 days before the event (or as specified in your contract). Cancellations: the retainer is typically non-refundable; any partial refunds are based on milestones. Contact us for your specific contract terms.",
     category: "payment",
     order: 8,
   },

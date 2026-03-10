@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles, Users, Calendar, Award, ChevronLeft, ChevronRight
 import { Button } from '../components/ui/button';
 import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
+import PackagesSection from '../components/PackagesSection';
 import { servicesApi, testimonialsApi } from '../lib/api';
 
 const HERO_VIDEOS = [
@@ -119,8 +120,9 @@ const HomePage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-body text-white/80 text-base md:text-lg mb-8 leading-relaxed"
             >
-              Transform your vision into reality with our premium event décor services
-              and extensive rental collection. From intimate gatherings to grand celebrations.
+              We craft unforgettable events across weddings, corporate gatherings, social soirées,
+              and graduations. Transform your vision into reality with our premium event décor
+              and extensive rental collection.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -254,9 +256,9 @@ const HomePage = () => {
                 are as unique as your story.
               </p>
               <p className="font-body text-muted-foreground leading-relaxed">
-                From weddings to corporate galas, birthday celebrations to baby showers,
-                we offer comprehensive décor services and an extensive rental inventory
-                to bring your vision to life.
+                From weddings to corporate galas, social soirées to graduations, baby showers to
+                birthday celebrations, we offer comprehensive décor services and an extensive
+                rental inventory to bring your vision to life.
               </p>
               <Link to="/about">
                 <Button
@@ -287,6 +289,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Packages */}
+      <PackagesSection limit={3} />
 
       {/* Testimonials */}
       <section className="section-padding" data-testid="testimonials-section">
@@ -369,6 +374,15 @@ const HomePage = () => {
                   data-testid="cta-get-quote-btn"
                 >
                   Get a Free Quote
+                </Button>
+              </Link>
+              <Link to="/packages">
+                <Button
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/10 rounded-full px-8 py-6 text-base"
+                  data-testid="cta-packages-btn"
+                >
+                  View Packages
                 </Button>
               </Link>
               <Link to="/rentals">
