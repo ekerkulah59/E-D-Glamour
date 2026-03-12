@@ -324,13 +324,22 @@ export const inventory = [
     price_note: '$125 (pickup) or $130 + $50 delivery',
   },
   {
+    id: 'chair-016',
+    name: 'Adult Two Seater Throne Chair',
+    category: 'Tables & Chairs',
+    shortDescription: 'Two-seater throne chair for weddings, quinceañeras, and royal-themed events.',
+    description: 'A stunning statement throne that adds grandeur to your special day. Perfect for bridal portraits, sweet sixteen, quinceañeras, and royal-themed celebrations. $125 with customer pickup/drop-off; $130 plus $50 for planner delivery and pickup.',
+    images: ['/kids-throne-chair.jpeg', '/kids-throne-chair.jpeg'],
+    price_note: '$200 (pickup) or $220 + $50 delivery',
+  },
+  {
     id: 'chair-015',
     name: 'Kid Throne Chair',
     category: 'Tables & Chairs',
     shortDescription: 'Child-sized throne chair for birthdays, photo ops, and royal-themed parties.',
     description: 'A smaller throne chair designed for kids. Perfect for birthday parties, quinceañeras, princess themes, and photo opportunities. $50 with customer pickup/drop-off; $60 for planner delivery and pickup.',
-    images: ['/kids-throne-chair.jpeg', '/kids-throne-chair.jpeg'],
-    price_note: '$50 (pickup) or $60 with delivery',
+    images: ['/kidd-throne.jpeg', '/kidd-throne.jpeg'],
+    price_note: '$50 (pickup) or $70 with delivery',
   },
   {
     id: 'chair-kids-chiavari',
@@ -372,6 +381,7 @@ export const inventory = [
     shortDescription: 'Digital Photo Booth for viral slow-motion videos.',
     description: 'Digital Photo Booth creating social-ready slow-motion clips. Perfect for weddings, corporate events, and parties. Guests love the shareable viral content.',
     images: ['/photoboot1.jpeg'],
+    price_note: '$125/hour',
   }
 ];
 
