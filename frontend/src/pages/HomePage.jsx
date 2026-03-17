@@ -10,6 +10,7 @@ import { servicesApi, testimonialsApi } from '../lib/api';
 
 const HERO_VIDEOS = [
   { src: '/gallary-v1.mp4', alt: 'E&D Glamour event highlights' },
+  { src: '/gallary-v2.mp4', alt: 'E&D Glamour event moments' },
   { src: '/gallary-v4.mp4', alt: 'E&D Glamour event moments' },
 ];
 
@@ -64,7 +65,7 @@ const HomePage = () => {
         </div>
 
         {/* Carousel controls */}
-        <button
+        {/* <button
           type="button"
           onClick={() => setHeroIndex((i) => (i - 1 + HERO_VIDEOS.length) % HERO_VIDEOS.length)}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
@@ -79,7 +80,7 @@ const HomePage = () => {
           aria-label="Next slide"
         >
           <ChevronRight className="h-8 w-8" />
-        </button>
+        </button> */}
         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
           {HERO_VIDEOS.map((_, i) => (
             <button

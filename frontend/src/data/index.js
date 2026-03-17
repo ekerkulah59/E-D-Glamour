@@ -6,7 +6,7 @@
 export const contact = {
   phone: '3027470611',
   phoneFormatted: '(302) 747-0611',
-  email: 'hello@edglamourmarketing.com',
+  email: 'EandDGlamourMarketing.24@gmail.com',
   address: { line1: 'Wilmington, DE', line2: '' },
 };
 
