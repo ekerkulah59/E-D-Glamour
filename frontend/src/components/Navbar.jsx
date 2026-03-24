@@ -1,19 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../components/ui/dropdown-menu';
 import { Button } from '../components/ui/button';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,10 +77,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA + Cart */}
           <div className="hidden lg:flex items-center gap-4">
+            <Link to="/cart" className="relative p-2.5" aria-label={`Cart${cartCount > 0 ? `, ${cartCount} item${cartCount !== 1 ? 's' : ''}` : ''}`} data-testid="nav-cart-btn">
+              <ShoppingCart className="w-6 h-6 text-foreground/80 hover:text-foreground transition-colors" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
             <Link to="/contact">
-              <Button 
+              <Button
                 className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
                 data-testid="nav-get-quote-btn"
               >
@@ -97,6 +101,8 @@ const Navbar = () => {
           <button
             className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
             data-testid="mobile-menu-toggle"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -128,8 +134,12 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
+                <Link to="/cart" className="flex items-center gap-2 font-body text-base font-medium py-2 text-foreground/80" data-testid="mobile-nav-cart">
+                  <ShoppingCart className="w-5 h-5" />
+                  Cart {cartCount > 0 && <span className="bg-primary text-primary-foreground text-xs font-bold rounded-full px-1.5">{cartCount}</span>}
+                </Link>
                 <Link to="/contact" className="mt-2">
-                  <Button 
+                  <Button
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full"
                     data-testid="mobile-get-quote-btn"
                   >

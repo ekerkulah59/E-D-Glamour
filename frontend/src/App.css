@@ -11,6 +11,7 @@
 /* Card hover effects */
 .card-hover {
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .card-hover:hover {

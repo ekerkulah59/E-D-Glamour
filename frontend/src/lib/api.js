@@ -109,12 +109,55 @@ export const blogApi = {
   },
 };
 
-// ─── Contact / Quote (client-side only) ──────────────────────────────────────
+// ─── Contact / Quote ─────────────────────────────────────────────────────────
+
+// Serverless function endpoint.
+// Vercel: /api/send-quote  |  Netlify: /.netlify/functions/send-quote
+// Override via REACT_APP_QUOTE_API env variable.
+const QUOTE_API = process.env.REACT_APP_QUOTE_API || '/api/send-quote';
 
 export const contactApi = {
-  submitQuote: (_data) => {
-    // In a static site there is no backend to send to.
-    // Simulate a successful submission.
-    return { data: { message: 'Quote request received' } };
+  submitQuote: async (data) => {
+    // In local dev (npm start), simulate success so the UI can be tested
+    const isLocal = typeof window !== 'undefined' &&
+      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (isLocal) {
+      await new Promise((r) => setTimeout(r, 800));
+      console.log('[Dev mock] Quote submitted:', data);
+      return { data: { message: 'Mock success — deploy to Vercel to send real emails.' } };
+    }
+
+    const url = QUOTE_API;
+    let res;
+    try {
+      res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+    } catch (networkErr) {
+      const msg = networkErr.message || 'Network error';
+      const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+      throw new Error(isLocal
+        ? `${msg}. For local testing, run \`vercel dev\` instead of \`npm start\` so the API works.`
+        : msg);
+    }
+    const text = await res.text();
+    let json = {};
+    try {
+      json = text ? JSON.parse(text) : {};
+    } catch {
+      if (!res.ok) {
+        throw new Error(
+          res.status === 404 && url.startsWith('/')
+            ? 'Quote API not found. For local testing, run `vercel dev` instead of `npm start`.'
+            : 'Server returned an invalid response. Please try again later.'
+        );
+      }
+    }
+    if (!res.ok) {
+      throw new Error(json.error || `Request failed (${res.status})`);
+    }
+    return { data: json };
   },
 };
