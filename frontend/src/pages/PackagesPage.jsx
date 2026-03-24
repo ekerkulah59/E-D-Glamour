@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Users, Check, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { packagesApi } from '../lib/api';
 import { Button } from '../components/ui/button';
+import PackageCard from '../components/PackageCard';
 
 const PackagesPage = () => {
   const packagesList = packagesApi.getAll().data;
@@ -43,48 +44,7 @@ const PackagesPage = () => {
         <div className="container-custom">
           <div className="grid md:grid-cols-3 gap-8">
             {packagesList.map((pkg, index) => (
-              <motion.article
-                key={pkg.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                data-testid={`package-card-${pkg.id}`}
-              >
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-2 text-primary mb-2">
-                    <Users size={20} />
-                    <span className="font-body text-sm font-medium">{pkg.guestRange}</span>
-                  </div>
-                  <h2 className="font-heading text-2xl font-bold text-foreground mb-2">
-                    {pkg.name}
-                  </h2>
-                  <p className="font-body text-lg font-semibold text-primary mb-4">
-                    {pkg.priceLabel}
-                  </p>
-                  <p className="font-body text-sm text-muted-foreground mb-6">
-                    {pkg.targetDescription}
-                  </p>
-                  <ul className="space-y-3">
-                    {pkg.inclusions.map((item, i) => (
-                      <li key={i} className="flex gap-3 font-body text-sm text-foreground">
-                        <Check size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="p-6 pt-0">
-                  <Link to="/contact">
-                    <Button
-                      variant={index === 1 ? 'default' : 'outline'}
-                      className="w-full rounded-full"
-                    >
-                      Get a Quote
-                    </Button>
-                  </Link>
-                </div>
-              </motion.article>
+              <PackageCard key={pkg.id} pkg={pkg} index={index} />
             ))}
           </div>
         </div>

@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Check, Calendar, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Check, Calendar, MessageCircle, ShoppingCart } from 'lucide-react';
 import { servicesApi } from '../lib/api';
 import { formatPrice, serviceCategoryLabels } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import QuoteForm from '../components/QuoteForm';
+import { useCart } from '../context/CartContext';
+import { toast } from 'sonner';
 
 const ServiceDetailPage = () => {
   const { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
+  const { addItem, items } = useCart();
 
   const service = servicesApi.getById(id).data;
 
@@ -27,6 +30,24 @@ const ServiceDetailPage = () => {
   const priceDisplay = service.starting_price ? formatPrice(service.starting_price) : 'Custom Quote';
   const images = service.images || [];
   const features = service.features || [];
+
+  const inCart = items.some((i) => i.item.id === service.id);
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: service.id,
+      name: service.name,
+      type: 'service',
+      category: service.category,
+      price_per_day: service.starting_price || null,
+      priceLabel: service.price_note || null,
+      images: service.images || [],
+    };
+    addItem(cartItem, 1);
+    toast.success(`${service.name} added to cart`, {
+      description: 'Go to your cart to request a quote.',
+    });
+  };
 
   return (
     <div className="min-h-screen pt-24" data-testid="service-detail-page">
@@ -90,8 +111,16 @@ const ServiceDetailPage = () => {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <Link to="/contact" className="flex-1">
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6" data-testid="request-quote-btn">
+                <Button
+                  onClick={handleAddToCart}
+                  className={`flex-1 rounded-full py-6 ${inCart ? 'bg-green-600 hover:bg-green-700 text-white' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
+                  data-testid="service-add-to-cart-btn"
+                >
+                  <ShoppingCart className="mr-2 h-4 w-4" />
+                  {inCart ? 'Added to Cart' : 'Add to Cart'}
+                </Button>
+                <Link to="/contact">
+                  <Button variant="outline" className="rounded-full py-6 px-6" data-testid="request-quote-btn">
                     <MessageCircle className="mr-2 h-4 w-4" /> Request a Quote
                   </Button>
                 </Link>

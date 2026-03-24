@@ -1,9 +1,31 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Users, Check } from 'lucide-react';
+import { Users, Check, ShoppingCart } from 'lucide-react';
 import { Button } from './ui/button';
+import { useCart } from '../context/CartContext';
+import { toast } from 'sonner';
 
 const PackageCard = ({ pkg, index = 0, featured = false }) => {
+  const { addItem, items } = useCart();
+
+  const inCart = items.some((i) => i.item.id === pkg.id);
+
+  const handleAddToCart = () => {
+    const cartItem = {
+      id: pkg.id,
+      name: pkg.name,
+      type: 'package',
+      category: 'package',
+      price_per_day: pkg.priceRange?.[0] || null,
+      priceLabel: pkg.priceLabel,
+      images: [],
+    };
+    addItem(cartItem, 1);
+    toast.success(`${pkg.name} added to cart`, {
+      description: 'Go to your cart to request a quote.',
+    });
+  };
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 24 }}
@@ -41,13 +63,25 @@ const PackageCard = ({ pkg, index = 0, featured = false }) => {
           )}
         </ul>
       </div>
-      <div className="p-6 pt-0">
+      <div className="p-6 pt-0 flex flex-col gap-2">
+        <Button
+          onClick={handleAddToCart}
+          variant={inCart ? 'outline' : (featured && index === 1 ? 'default' : 'default')}
+          className={`w-full rounded-full gap-2 ${
+            inCart
+              ? 'border-green-600 text-green-600 hover:bg-green-50'
+              : featured && index === 1
+              ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+              : 'bg-primary text-primary-foreground hover:bg-primary/90'
+          }`}
+          data-testid={`package-add-to-cart-${pkg.id}`}
+        >
+          <ShoppingCart size={16} />
+          {inCart ? 'Added to Cart' : 'Add to Cart'}
+        </Button>
         <Link to="/contact">
-          <Button
-            variant={featured && index === 1 ? 'default' : 'outline'}
-            className="w-full rounded-full"
-          >
-            Get a Quote
+          <Button variant="outline" className="w-full rounded-full text-sm">
+            Request a Custom Quote
           </Button>
         </Link>
       </div>

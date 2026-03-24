@@ -1,12 +1,27 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ShoppingCart } from 'lucide-react';
 import { formatPrice } from '../lib/utils';
 import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
+import { useCart } from '../context/CartContext';
+import { toast } from 'sonner';
 
 const RentalCard = ({ rental, index = 0 }) => {
   const shortDesc = rental.short_description ?? rental.shortDescription;
   const hasPrice = rental.price_per_day != null;
   const priceNote = rental.price_note;
+  const { addItem } = useCart();
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem({ ...rental, type: 'rental' }, 1);
+    toast.success(`${rental.name} added to cart`, {
+      description: 'View your cart to checkout.',
+      action: { label: 'View Cart', onClick: () => (window.location.href = '/cart') },
+    });
+  };
 
   return (
     <motion.div
@@ -40,7 +55,7 @@ const RentalCard = ({ rental, index = 0 }) => {
             <p className="font-body text-xs text-muted-foreground mb-3 line-clamp-1">
               {shortDesc}
             </p>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <div>
                 {hasPrice ? (
                   <>
@@ -63,6 +78,16 @@ const RentalCard = ({ rental, index = 0 }) => {
                 )
               )}
             </div>
+            {rental.is_available !== false && (
+              <Button
+                size="sm"
+                onClick={handleAddToCart}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full text-xs"
+                data-testid={`add-to-cart-${rental.id}`}
+              >
+                <ShoppingCart className="w-3 h-3 mr-1" /> Add to Cart
+              </Button>
+            )}
           </div>
         </div>
       </Link>
