@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Package, Info } from 'lucide-react';
+import { ArrowLeft, Calendar, Package, Info, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { rentalsApi } from '../lib/api';
 import { formatPrice } from '../lib/utils';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import QuoteForm from '../components/QuoteForm';
+import { useCart } from '../context/CartContext';
+import { toast } from 'sonner';
 
 const ImageThumbnail = ({ img, index, isActive, onClick }) => (
   <button onClick={() => onClick(index)} className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${isActive ? 'border-primary' : 'border-transparent opacity-60 hover:opacity-100'}`} data-testid={`rental-thumbnail-${index}`}>
@@ -24,6 +26,8 @@ const SpecRow = ({ label, value }) => (
 const RentalDetailPage = () => {
   const { id } = useParams();
   const [activeImage, setActiveImage] = useState(0);
+  const [qty, setQty] = useState(1);
+  const { addItem } = useCart();
 
   const rental = rentalsApi.getById(id).data;
 
@@ -35,6 +39,14 @@ const RentalDetailPage = () => {
       </div>
     );
   }
+
+  const handleAddToCart = () => {
+    addItem({ ...rental, type: 'rental' }, qty);
+    toast.success(`${rental.name} added to cart`, {
+      description: `${qty} unit${qty > 1 ? 's' : ''} added.`,
+      action: { label: 'View Cart', onClick: () => (window.location.href = '/cart') },
+    });
+  };
 
   const categoryLabel = rental.category;
   const specKeys = rental.specifications ? Object.keys(rental.specifications) : [];
@@ -134,10 +146,41 @@ const RentalDetailPage = () => {
                 </div>
               )}
 
-              <div className="flex gap-4 pt-4">
-                <Link to="/contact" className="flex-1">
-                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6" data-testid="reserve-now-btn">
-                    <Calendar className="mr-2 h-4 w-4" /> Reserve Now
+              <div className="pt-4 space-y-3">
+                {rental.is_available !== false && (
+                  <>
+                    <div className="flex items-center gap-3">
+                      <span className="font-body text-sm font-medium text-foreground">Quantity:</span>
+                      <div className="flex items-center border border-border rounded-full overflow-hidden">
+                        <button
+                          onClick={() => setQty((q) => Math.max(1, q - 1))}
+                          className="px-3 py-2 hover:bg-muted transition-colors"
+                          data-testid="qty-decrease"
+                        >
+                          <Minus className="w-4 h-4" />
+                        </button>
+                        <span className="px-4 py-2 font-body text-sm font-semibold min-w-[3rem] text-center" data-testid="qty-value">{qty}</span>
+                        <button
+                          onClick={() => setQty((q) => q + 1)}
+                          className="px-3 py-2 hover:bg-muted transition-colors"
+                          data-testid="qty-increase"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                    <Button
+                      onClick={handleAddToCart}
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full py-6"
+                      data-testid="add-to-cart-btn"
+                    >
+                      <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+                    </Button>
+                  </>
+                )}
+                <Link to="/contact" className="block">
+                  <Button variant="outline" className="w-full rounded-full py-6" data-testid="reserve-now-btn">
+                    <Calendar className="mr-2 h-4 w-4" /> Reserve Now (Contact Us)
                   </Button>
                 </Link>
               </div>

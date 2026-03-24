@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { CartProvider } from "./context/CartContext";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -19,32 +20,36 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import BookingPage from "./pages/BookingPage";
 import PackagesPage from "./pages/PackagesPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
     <div className="App min-h-screen bg-background">
       <BrowserRouter>
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/:id" element={<ServiceDetailPage />} />
-            <Route path="/rentals" element={<RentalsPage />} />
-            <Route path="/rentals/:id" element={<RentalDetailPage />} />
-            <Route path="/packages" element={<PackagesPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/faq" element={<FAQPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogDetailPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/book" element={<BookingPage />} />
-          </Routes>
-        </main>
-        <Footer />
-        <Toaster position="top-right" richColors />
+        <CartProvider>
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:id" element={<ServiceDetailPage />} />
+              <Route path="/rentals" element={<RentalsPage />} />
+              <Route path="/rentals/:id" element={<RentalDetailPage />} />
+              <Route path="/packages" element={<PackagesPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogDetailPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/book" element={<BookingPage />} />
+              <Route path="/cart" element={<CartPage />} />
+            </Routes>
+          </main>
+          <Footer />
+          <Toaster position="top-right" richColors />
+        </CartProvider>
       </BrowserRouter>
     </div>
   );

@@ -59,22 +59,22 @@ const ContactPage = () => {
                 </p>
               </div>
 
-              <ContactItem 
+              <ContactItem
                 icon={MapPin}
                 title="Visit Us"
-                line1="Wilmington, DE"
+                line1="Dover, DE"
                 line2=""
               />
               <ContactItem 
                 icon={Phone}
                 title="Call Us"
-                line1="(302) 747-0611"
+                line1="(302) 281-2137"
                 line2="Mon-Fri: 9am - 6pm"
               />
               <ContactItem 
                 icon={Mail}
                 title="Email Us"
-                line1="hello@edglamourmarketing.com"
+                line1="eanddglamourmarketing.24@gmail.com"
                 line2=""
               />
               <ContactItem 
@@ -109,7 +109,7 @@ const ContactPage = () => {
           <div className="text-center">
             <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
             <p className="font-heading text-xl font-semibold text-foreground">
-              Wilmington, DE
+              Dover, DE
             </p>
           </div>
         </div>

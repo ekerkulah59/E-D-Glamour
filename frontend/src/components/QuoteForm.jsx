@@ -15,6 +15,7 @@ import {
 } from '../components/ui/select';
 import { toast } from 'sonner';
 import { Loader2, Send } from 'lucide-react';
+import { contactApi } from '../lib/api';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -51,17 +52,21 @@ const QuoteForm = ({ serviceId = null, rentalId = null, prefillEventType = '' })
 
   const eventType = watch('event_type');
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     setIsSubmitting(true);
-
-    // Simulate submission delay for better UX
-    setTimeout(() => {
+    try {
+      await contactApi.submitQuote(data);
       toast.success('Quote request submitted!', {
         description: "We'll get back to you within 24-48 hours.",
       });
       reset();
+    } catch (err) {
+      toast.error('Could not send your request', {
+        description: err.message || 'Please try again or contact us by phone.',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 600);
+    }
   };
 
   const eventTypes = [

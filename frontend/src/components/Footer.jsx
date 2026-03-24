@@ -16,15 +16,19 @@ const Footer = () => {
               Your vision, our expertise.
             </p>
             <div className="flex gap-4 pt-2">
-              <a 
-                href="#" 
+              <a
+                href="https://www.instagram.com/glamour__decormarketing?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-accent transition-colors"
                 data-testid="social-instagram"
               >
                 <Instagram size={20} />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="https://www.facebook.com/profile.php?id=61551575504517"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white/60 hover:text-accent transition-colors"
                 data-testid="social-facebook"
               >
