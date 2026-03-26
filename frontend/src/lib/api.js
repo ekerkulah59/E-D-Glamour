@@ -118,15 +118,6 @@ const QUOTE_API = process.env.REACT_APP_QUOTE_API || '/api/send-quote';
 
 export const contactApi = {
   submitQuote: async (data) => {
-    // In local dev (npm start), simulate success so the UI can be tested
-    const isLocal = typeof window !== 'undefined' &&
-      (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-    if (isLocal) {
-      await new Promise((r) => setTimeout(r, 800));
-      console.log('[Dev mock] Quote submitted:', data);
-      return { data: { message: 'Mock success — deploy to Vercel to send real emails.' } };
-    }
-
     const url = QUOTE_API;
     let res;
     try {
@@ -139,7 +130,7 @@ export const contactApi = {
       const msg = networkErr.message || 'Network error';
       const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
       throw new Error(isLocal
-        ? `${msg}. For local testing, run \`vercel dev\` instead of \`npm start\` so the API works.`
+        ? `${msg}. For local testing, run \`npm run dev:netlify\` instead of \`npm start\` so the API works.`
         : msg);
     }
     const text = await res.text();
@@ -150,7 +141,7 @@ export const contactApi = {
       if (!res.ok) {
         throw new Error(
           res.status === 404 && url.startsWith('/')
-            ? 'Quote API not found. For local testing, run `vercel dev` instead of `npm start`.'
+            ? 'Quote API not found. For local testing, run `npm run dev:netlify` instead of `npm start`.'
             : 'Server returned an invalid response. Please try again later.'
         );
       }
