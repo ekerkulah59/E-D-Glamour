@@ -3,6 +3,15 @@
   command = "yarn build"
   publish = "build"
 
+[functions]
+  directory = "frontend/netlify/functions"
+
+# Route quote API calls to the Netlify function
+[[redirects]]
+  from = "/api/send-quote"
+  to = "/.netlify/functions/send-quote"
+  status = 200
+
 # SPA: serve index.html for all routes so React Router works
 [[redirects]]
   from = "/*"
