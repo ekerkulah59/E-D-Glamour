@@ -74,12 +74,12 @@ const PackagesPage = () => {
             Ready to plan your event?
           </h2>
           <p className="font-body text-muted-foreground mb-6">
-            Call us at (302) 747-0611 or request a quote and we'll refine pricing for your date and scope.
+            Call us at (302) 281-2137 or request a quote and we'll refine pricing for your date and scope.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+13027470611">
+            <a href="tel:+13022812137">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 gap-2">
-                <Phone size={18} /> (302) 747-0611
+                <Phone size={18} /> (302) 281-2137
               </Button>
             </a>
             <Link to="/contact">

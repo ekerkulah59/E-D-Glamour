@@ -100,27 +100,27 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-accent mt-0.5 flex-shrink-0" />
                 <span className="font-body text-sm text-white/70">
-                  Wilmington, DE
+                  Dover, DE
                 </span>
               </li>
               <li>
-                <a 
-                  href="tel:+13027470611" 
+                <a
+                  href="tel:+13022812137"
                   className="flex items-center gap-3 font-body text-sm text-white/70 hover:text-white transition-colors"
                   data-testid="footer-phone"
                 >
                   <Phone size={18} className="text-accent flex-shrink-0" />
-                  (302) 747-0611
+                  (302) 281-2137
                 </a>
               </li>
               <li>
-                <a 
-                  href="mailto:hello@edglamourmarketing.com" 
+                <a
+                  href="mailto:eanddglamourmarketing.24@gmail.com"
                   className="flex items-center gap-3 font-body text-sm text-white/70 hover:text-white transition-colors"
                   data-testid="footer-email"
                 >
                   <Mail size={18} className="text-accent flex-shrink-0" />
-                  hello@edglamourmarketing.com
+                  eanddglamourmarketing.24@gmail.com
                 </a>
               </li>
             </ul>

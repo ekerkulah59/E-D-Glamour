@@ -4,10 +4,10 @@
 // ─── CONTACT (from official doc) ─────────────────────────────────────────────
 
 export const contact = {
-  phone: '3027470611',
-  phoneFormatted: '(302) 747-0611',
-  email: 'EandDGlamourMarketing.24@gmail.com',
-  address: { line1: 'Wilmington, DE', line2: '' },
+  phone: '3022812137',
+  phoneFormatted: '(302) 281-2137',
+  email: 'eanddglamourmarketing.24@gmail.com',
+  address: { line1: 'Dover, DE', line2: '' },
 };
 
 // ─── PACKAGES (three-tier structure from official doc) ────────────────────────
@@ -390,56 +390,33 @@ export const inventory = [
 export const testimonials = [
   {
     id: "test-1",
-    client_name: "Sarah & Michael Thompson",
-    event_type: "Wedding",
+    client_name: "Princess McBride",
+    event_type: "Google Review",
     rating: 5,
     review:
-      "E&D Glamour Marketing transformed our wedding into a fairytale! The attention to detail was extraordinary - from the stunning floral arrangements to the elegant table settings. Our guests couldn't stop complimenting the décor. Worth every penny!",
-    image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=400",
+      "I had an amazing experience with E&D Glamour Marketing! From start to finish, their professionalism, creativity, and attention to detail truly stood out. They understood my vision and brought it to life beyond my expectations. The communication was smooth, timely, and very helpful throughout the entire process. If you're looking for a team that delivers quality work and makes you feel like a priority, I highly recommend them. I will definitely be using their services again!",
+    image: null,
     is_featured: true,
   },
   {
     id: "test-2",
-    client_name: "Jennifer Martinez",
-    event_type: "Corporate Gala",
+    client_name: "Jowo Bombo",
+    event_type: "Birthday · Google Review",
     rating: 5,
     review:
-      "We've worked with many event decorators, but E&D Glamour Marketing stands out. They understood our brand perfectly and created an impressive atmosphere for our annual gala. Professional, creative, and reliable.",
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400",
+      "The best decorating services!! Dearma decorated for my birthday and it was gorgeous! Everything I've ever wanted to the T! Very affordable as well!",
+    image: null,
     is_featured: true,
   },
   {
     id: "test-3",
-    client_name: "The Anderson Family",
-    event_type: "50th Birthday",
+    client_name: "Madelyn Deshield",
+    event_type: "Graduation · Google Review",
     rating: 5,
     review:
-      "My mother's 50th birthday party was absolutely magical thanks to E&D Glamour Marketing. The balloon arrangements and photo backdrop were Instagram-worthy. They made the planning process so easy!",
-    image:
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400",
+      "They did my daughter graduation for me last year and it was so beautiful. Would definitely hire again",
+    image: null,
     is_featured: true,
-  },
-  {
-    id: "test-4",
-    client_name: "Emily Chen",
-    event_type: "Baby Shower",
-    rating: 5,
-    review:
-      "The most beautiful baby shower setup I've ever seen! The team was incredibly creative and brought my vision to life perfectly. Every detail was thoughtful and elegant.",
-    image: null,
-    is_featured: false,
-  },
-  {
-    id: "test-5",
-    client_name: "Robert & Linda Davis",
-    event_type: "Anniversary",
-    rating: 5,
-    review:
-      "For our 25th anniversary, we wanted something special. E&D Glamour Marketing delivered beyond our expectations. The romantic ambiance they created was perfect for celebrating our love story.",
-    image: null,
-    is_featured: false,
   },
 ];
 
@@ -533,7 +510,7 @@ export const faqs = [
     id: "faq-7",
     question: "How do I get a quote?",
     answer:
-      "Fill out our contact form with details about your event, or call us at (302) 747-0611. We'll respond within 24-48 hours with a customized quote. All prices are ballpark estimates and can be refined during a discovery call based on your location, date, and exact scope.",
+      "Fill out our contact form with details about your event, or call us at (302) 281-2137. We'll respond within 24-48 hours with a customized quote. All prices are ballpark estimates and can be refined during a discovery call based on your location, date, and exact scope.",
     category: "booking",
     order: 7,
   },
