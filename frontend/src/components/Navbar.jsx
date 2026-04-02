@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { Menu, X, ShoppingCart, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../components/ui/button';
 import { useCart } from '../context/CartContext';
@@ -25,9 +25,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
-    { name: 'Packages', path: '/packages' },
-    { name: 'Rentals', path: '/rentals' },
+    { name: 'Services', path: '/services', dropdown: true },
+    { name: 'Packages', path: '/packages', dropdown: true },
+    { name: 'Rentals', path: '/rentals', dropdown: true },
     { name: 'Book Now', path: '/book' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
@@ -37,48 +37,47 @@ const Navbar = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-2' : 'py-4'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
       data-testid="navbar"
     >
       <nav 
-        className={`mx-auto max-w-6xl px-4 md:px-6 py-3 rounded-full transition-all duration-300 ${
+        className={`w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-3.5 rounded-none transition-all duration-300 ${
           isScrolled 
             ? 'glass-nav shadow-lg' 
             : 'bg-white/60 backdrop-blur-sm'
         }`}
       >
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link 
-            to="/" 
-            className="font-heading text-xl md:text-2xl font-semibold text-foreground"
+        {/* Three-column layout: logo | centered nav | cart + CTA */}
+        <div className="grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center gap-3 w-full">
+          <Link
+            to="/"
+            className="font-heading text-xl md:text-2xl font-semibold text-foreground justify-self-start min-w-0 truncate"
             data-testid="navbar-logo"
           >
             E&D Glamour Marketing
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 flex-wrap">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-body text-sm font-medium transition-colors link-underline ${
-                  isActive(link.path) 
-                    ? 'text-primary' 
+                className={`font-body text-xs font-semibold uppercase tracking-wide transition-colors link-underline inline-flex items-center gap-1 ${
+                  isActive(link.path)
+                    ? 'text-primary'
                     : 'text-foreground/80 hover:text-foreground'
                 }`}
-                data-testid={`nav-link-${link.name.toLowerCase()}`}
+                data-testid={`nav-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {link.name}
+                {link.dropdown && (
+                  <ChevronDown className="w-3.5 h-3.5 shrink-0 opacity-70" aria-hidden />
+                )}
               </Link>
             ))}
           </div>
 
-          {/* CTA + Cart */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center justify-self-end gap-3 sm:gap-4">
             <Link to="/cart" className="relative p-2.5" aria-label={`Cart${cartCount > 0 ? `, ${cartCount} item${cartCount !== 1 ? 's' : ''}` : ''}`} data-testid="nav-cart-btn">
               <ShoppingCart className="w-6 h-6 text-foreground/80 hover:text-foreground transition-colors" />
               {cartCount > 0 && (
@@ -89,7 +88,7 @@ const Navbar = () => {
             </Link>
             <Link to="/contact">
               <Button
-                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-5 sm:px-6 text-xs font-semibold uppercase tracking-wide"
                 data-testid="nav-get-quote-btn"
               >
                 Get a Quote
@@ -97,9 +96,9 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden justify-self-end p-2 text-foreground row-start-1 col-start-2"
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
