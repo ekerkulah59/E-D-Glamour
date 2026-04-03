@@ -4,6 +4,7 @@ import { Filter } from 'lucide-react';
 import RentalCard from '../components/RentalCard';
 import { rentalsApi } from '../lib/api';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const RentalsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,14 +27,21 @@ const RentalsPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="rentals-page">
+      <SEO
+        title="Party Rentals Dover DE — Tables, Chairs, Photo Booth"
+        description="Affordable party rentals in Dover, Delaware. Chiavari chairs, folding tables, 360 photo booth, throne chairs, and tents. Pickup or delivery available. Serving DE, MD, PA & NJ. Call (302) 281-2137."
+        canonical="/rentals"
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
             <p className="font-body text-primary text-sm uppercase tracking-widest mb-2">Rental Catalog</p>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">Event Rentals</h1>
+            <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Party Rentals in Dover, Delaware — Tables, Chairs &amp; Photo Booths
+            </h1>
             <p className="font-body text-muted-foreground text-lg">
-              Browse our premium collection of tents, tables, chairs, photo booths,
-              catering equipment, and linens for your next event.
+              Browse our premium collection of Chiavari chairs, folding tables, 360 photo booths,
+              throne chairs, and tents for your next event in Delaware, Maryland, or Pennsylvania.
             </p>
           </motion.div>
         </div>

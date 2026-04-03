@@ -4,12 +4,18 @@ import { Phone } from 'lucide-react';
 import { packagesApi } from '../lib/api';
 import { Button } from '../components/ui/button';
 import PackageCard from '../components/PackageCard';
+import SEO from '../components/SEO';
 
 const PackagesPage = () => {
   const packagesList = packagesApi.getAll().data;
 
   return (
     <div className="min-h-screen pt-24" data-testid="packages-page">
+      <SEO
+        title="Event Planning Packages Dover DE — Tier 1, 2 &amp; 3"
+        description="Event planning packages starting at $1,500 in Dover, Delaware. From 50-guest intimate celebrations to 200-guest grand events. Full décor, coordination, and day-of management. Serving all of DE."
+        canonical="/packages"
+      />
       {/* Header */}
       <section className="section-padding bg-muted">
         <div className="container-custom">
@@ -22,11 +28,12 @@ const PackagesPage = () => {
               Event Packages
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Three Tiers, One Standard of Excellence
+              Event Planning Packages — Dover, DE
             </h1>
             <p className="font-body text-muted-foreground text-lg">
-              We craft unforgettable events across weddings, corporate gatherings, social soirées,
-              and graduations. Our three-tier package structure is designed to fit diverse budgets
+              We craft unforgettable events across Delaware, Maryland, and Pennsylvania —
+              from weddings to corporate gatherings to graduation parties.
+              Our three-tier package structure is designed to fit diverse budgets
               and needs while scaling with the size of your guest list and the complexity of your venue.
               Each tier offers a clear scope, transparent pricing, and a dedicated team to bring your
               vision to life—from concept to curtain call.

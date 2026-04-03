@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../components/ui/accordion';
+import SEO from '../components/SEO';
 
 const FAQPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -26,8 +27,27 @@ const FAQPage = () => {
     { value: 'payment', label: 'Payment' },
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allFaqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen pt-24" data-testid="faq-page">
+      <SEO
+        title="Event Planning FAQ — Party Rentals &amp; Décor | E&amp;D Glamour Marketing Dover DE"
+        description="Answers to your questions about event décor packages, photo booth rentals, booking timelines, payment terms, and delivery in Dover, Delaware."
+        canonical="/faq"
+        schema={faqSchema}
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center">

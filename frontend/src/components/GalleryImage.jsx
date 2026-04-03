@@ -30,6 +30,7 @@ const GalleryImage = ({ image, index = 0, onClick }) => {
             src={image.url}
             alt={image.title}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end">

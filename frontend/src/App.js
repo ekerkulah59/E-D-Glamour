@@ -21,6 +21,9 @@ import ContactPage from "./pages/ContactPage";
 import BookingPage from "./pages/BookingPage";
 import PackagesPage from "./pages/PackagesPage";
 import CartPage from "./pages/CartPage";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import RefundPage from "./pages/RefundPage";
 
 function App() {
   return (
@@ -45,6 +48,9 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/book" element={<BookingPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/refund-policy" element={<RefundPage />} />
             </Routes>
           </main>
           <Footer />

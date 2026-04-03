@@ -271,12 +271,12 @@ export const inventory = [
   },
   {
     id: 'chair-003',
-    name: 'Chiavari Chair - Pink',
+    name: ' KidsChiavari Chair - Pink',
     category: 'Tables & Chairs',
-    shortDescription: 'Elegant pink Chiavari chairs for weddings and formal events.',
-    description: 'Pink Chiavari chairs for weddings, galas, and upscale events. $6.50/chair with customer pickup and drop-off; $6.75/chair plus $50 for planner delivery and pickup.',
+    shortDescription: 'Elegant pink Chiavari chairs for kids tables and photo ops.',
+    description: 'Pink Chiavari chairs for kids tables and photo ops. $2.50/chair with customer pickup and drop-off; $3.00/chair with delivery',
     images: ['/pink-chover-chair.jpeg'],
-    price_note: 'From $6.50/chair (pickup) or $6.75/chair + $50 delivery',
+    price_note: 'From $2.50/chair (pickup) or $3.00/chair with delivery',
   },
 
   {

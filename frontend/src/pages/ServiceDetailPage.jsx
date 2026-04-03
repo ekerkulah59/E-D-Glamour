@@ -9,6 +9,7 @@ import { Badge } from '../components/ui/badge';
 import QuoteForm from '../components/QuoteForm';
 import { useCart } from '../context/CartContext';
 import { toast } from 'sonner';
+import SEO from '../components/SEO';
 
 const ServiceDetailPage = () => {
   const { id } = useParams();
@@ -33,6 +34,28 @@ const ServiceDetailPage = () => {
 
   const inCart = items.some((i) => i.item.id === service.id);
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.description,
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'E&D Glamour Marketing',
+      telephone: '+13022812137',
+      address: { '@type': 'PostalAddress', addressLocality: 'Dover', addressRegion: 'DE', addressCountry: 'US' },
+    },
+    areaServed: ['Dover, DE', 'Wilmington, DE', 'Maryland', 'Pennsylvania', 'New Jersey'],
+    offers: service.starting_price
+      ? {
+          '@type': 'Offer',
+          priceCurrency: 'USD',
+          price: String(service.starting_price),
+          description: service.price_note || undefined,
+        }
+      : undefined,
+  };
+
   const handleAddToCart = () => {
     const cartItem = {
       id: service.id,
@@ -51,6 +74,13 @@ const ServiceDetailPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="service-detail-page">
+      <SEO
+        title={`${service.name} in Dover, Delaware`}
+        description={`${service.short_description} ${service.price_note || ''} Serving Dover, DE and all of Delaware, Maryland, and Pennsylvania. Call E&D Glamour Marketing at (302) 281-2137.`}
+        canonical={`/services/${service.id}`}
+        ogImage={images[0] && images[0].startsWith('/') ? images[0] : undefined}
+        schema={serviceSchema}
+      />
       <div className="container-custom py-4">
         <Link to="/services" className="font-body text-sm text-muted-foreground hover:text-foreground flex items-center gap-2" data-testid="back-to-services">
           <ArrowLeft size={16} /> Back to Services

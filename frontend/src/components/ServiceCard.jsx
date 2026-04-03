@@ -41,8 +41,9 @@ const ServiceCard = ({ service, index = 0 }) => {
           <div className="image-zoom aspect-[4/3] relative">
             <img
               src={service.images[0]}
-              alt={service.name}
+              alt={`${service.name} by E&D Glamour Marketing, Dover Delaware`}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>

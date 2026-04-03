@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import BlogCard from '../components/BlogCard';
 import { blogApi } from '../lib/api';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const BlogPage = () => {
   const [activeTag, setActiveTag] = useState('all');
@@ -16,6 +17,11 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="blog-page">
+      <SEO
+        title="Event Planning Tips &amp; Décor Ideas Blog | E&amp;D Glamour Marketing Dover DE"
+        description="Event planning inspiration, photo booth guides, wedding décor trends, and party ideas from E&amp;D Glamour Marketing — Dover, Delaware's premier event decorators."
+        canonical="/blog"
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">

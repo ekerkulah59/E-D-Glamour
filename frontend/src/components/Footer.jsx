@@ -53,8 +53,8 @@ const Footer = () => {
                 { name: 'Packages', path: '/packages' },
                 { name: 'Rentals', path: '/rentals' },
                 { name: 'Gallery', path: '/gallery' },
-                // { name: 'Testimonials', path: '/testimonials' },
-                // { name: 'Blog', path: '/blog' },
+                { name: 'Testimonials', path: '/testimonials' },
+                { name: 'Blog', path: '/blog' },
               ].map((link) => (
                 <li key={link.path}>
                   <Link 
@@ -132,12 +132,21 @@ const Footer = () => {
           <p className="font-body text-sm text-white/50">
             © {currentYear} E&D Glamour Marketing. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
             <Link to="/faq" className="font-body text-sm text-white/50 hover:text-white transition-colors">
               FAQ
             </Link>
             <Link to="/contact" className="font-body text-sm text-white/50 hover:text-white transition-colors">
               Contact
+            </Link>
+            <Link to="/terms" className="font-body text-sm text-white/50 hover:text-white transition-colors">
+              Terms &amp; Conditions
+            </Link>
+            <Link to="/privacy" className="font-body text-sm text-white/50 hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/refund-policy" className="font-body text-sm text-white/50 hover:text-white transition-colors">
+              Refund Policy
             </Link>
           </div>
         </div>

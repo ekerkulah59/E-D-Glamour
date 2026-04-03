@@ -28,7 +28,7 @@ const Navbar = () => {
     { name: 'Services', path: '/services', dropdown: true },
     { name: 'Packages', path: '/packages', dropdown: true },
     { name: 'Rentals', path: '/rentals', dropdown: true },
-    { name: 'Book Now', path: '/book' },
+    // { name: 'Book Now', path: '/book' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'About', path: '/about' },
   ];
