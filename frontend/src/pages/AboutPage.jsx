@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Award, Users, Heart, Sparkles } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const AboutPage = () => {
   const values = [
@@ -47,6 +48,11 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="about-page">
+      <SEO
+        title="About E&amp;D Glamour Marketing — Event Planners in Dover, Delaware"
+        description="Meet the team behind Dover's premier event decoration company. E&amp;D Glamour Marketing has been creating stunning celebrations across Delaware since 2021. Learn our story."
+        canonical="/about"
+      />
       {/* Hero */}
       <section className="section-padding bg-muted">
         <div className="container-custom">
@@ -62,10 +68,9 @@ const AboutPage = () => {
                 Creating Moments That Last a Lifetime
               </h1>
               <p className="font-body text-muted-foreground text-lg leading-relaxed mb-6">
-                E&D Glamour Marketing was founded in 2015 with a simple mission: to transform 
+                E&D Glamour Marketing was founded in 2021 with a simple mission: to transform 
                 ordinary spaces into extraordinary experiences. What started as a small 
-                team with big dreams has grown into a full-service event decoration company 
-                trusted by thousands of clients.
+                team with big dreams has grown into a full-service event decoration company serving all of Delaware, Maryland, Pennsylvania, and New Jersey.
               </p>
               <p className="font-body text-muted-foreground leading-relaxed">
                 We believe that every event tells a story, and we're here to help you tell 
@@ -178,12 +183,7 @@ const AboutPage = () => {
                   interior designer, saw a gap in the market for high-quality, personalized 
                   event décor services.
                 </p>
-                <p>
-                  Today, we operate a 10,000 sq ft warehouse filled with premium rental 
-                  inventory and employ a team of 25 talented professionals. We've decorated 
-                  over 500 events and continue to grow, but our commitment to personalized 
-                  service remains unchanged.
-                </p>
+                
                 <p>
                   Every event, regardless of size, receives our full attention and creative 
                   energy. Because at E&D Glamour Marketing, your celebration is our canvas.

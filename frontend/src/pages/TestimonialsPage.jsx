@@ -3,12 +3,18 @@ import TestimonialCard from '../components/TestimonialCard';
 import { testimonialsApi } from '../lib/api';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const TestimonialsPage = () => {
   const testimonials = testimonialsApi.getAll().data;
 
   return (
     <div className="min-h-screen pt-24" data-testid="testimonials-page">
+      <SEO
+        title="Client Reviews &amp; Testimonials | E&amp;D Glamour Marketing Dover DE"
+        description="Read 5-star reviews from happy clients who trusted E&amp;D Glamour Marketing with their weddings, birthdays, and corporate events in Dover, Delaware."
+        canonical="/testimonials"
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center">

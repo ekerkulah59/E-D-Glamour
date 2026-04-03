@@ -9,6 +9,7 @@ import { Badge } from '../components/ui/badge';
 import QuoteForm from '../components/QuoteForm';
 import { useCart } from '../context/CartContext';
 import { toast } from 'sonner';
+import SEO from '../components/SEO';
 
 const ImageThumbnail = ({ img, index, isActive, onClick }) => (
   <button onClick={() => onClick(index)} className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${isActive ? 'border-primary' : 'border-transparent opacity-60 hover:opacity-100'}`} data-testid={`rental-thumbnail-${index}`}>
@@ -51,8 +52,43 @@ const RentalDetailPage = () => {
   const categoryLabel = rental.category;
   const specKeys = rental.specifications ? Object.keys(rental.specifications) : [];
 
+  const is360Booth = rental.id === 'photo-book-360';
+  const rentalSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: rental.name,
+    description: rental.description,
+    image: rental.images?.[0] ? `https://www.edglamourmarketing.com${rental.images[0]}` : undefined,
+    brand: { '@type': 'Brand', name: 'E&D Glamour Marketing' },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price: is360Booth ? '125' : undefined,
+      priceSpecification: is360Booth
+        ? { '@type': 'UnitPriceSpecification', price: '125', priceCurrency: 'USD', unitText: 'HOUR' }
+        : undefined,
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'LocalBusiness', name: 'E&D Glamour Marketing', telephone: '+13022812137' },
+      areaServed: 'Dover, Delaware',
+    },
+  };
+
+  const seoTitle = is360Booth
+    ? '360 Photo Booth Rental Dover Delaware | $125/hour'
+    : `${rental.name} Rental Dover Delaware`;
+  const seoDescription = is360Booth
+    ? 'Rent our 360 photo booth in Dover, DE for weddings, corporate events, and parties. Creates viral slow-motion videos. $125/hour. Serving Delaware, Maryland & Pennsylvania.'
+    : `Rent ${rental.name} in Dover, Delaware for your next event. ${rental.shortDescription} Serving DE, MD, PA & NJ. Call (302) 281-2137.`;
+
   return (
     <div className="min-h-screen pt-24" data-testid="rental-detail-page">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        canonical={`/rentals/${rental.id}`}
+        ogImage={rental.images?.[0] ? rental.images[0] : undefined}
+        schema={rentalSchema}
+      />
       <div className="container-custom py-4">
         <Link to="/rentals" className="font-body text-sm text-muted-foreground hover:text-foreground flex items-center gap-2" data-testid="back-to-rentals">
           <ArrowLeft size={16} /> Back to Rentals

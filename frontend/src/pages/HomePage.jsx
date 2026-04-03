@@ -7,6 +7,7 @@ import ServiceCard from '../components/ServiceCard';
 import TestimonialCard from '../components/TestimonialCard';
 import PackagesSection from '../components/PackagesSection';
 import { servicesApi, testimonialsApi } from '../lib/api';
+import SEO from '../components/SEO';
 
 const HERO_VIDEOS = [
   { src: '/gallary-v1.mp4', alt: 'E&D Glamour event highlights' },
@@ -37,6 +38,11 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen" data-testid="home-page">
+      <SEO
+        title="Event Planner &amp; 360 Photo Booth Rental Dover DE"
+        description=" Event planning and decoration services in Dover, Delaware. Serving weddings, birthdays &amp; corporate events across DE, MD, PA, NJ. Call (302) 281-2137."
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden" data-testid="hero-section">
         {/* Background Video Carousel */}
@@ -214,7 +220,7 @@ const HomePage = () => {
                 transition={{ delay: 0.1 }}
                 className="font-heading text-3xl md:text-4xl font-bold text-foreground"
               >
-                Our Services
+                Our Event Décor Services in Delaware
               </motion.h2>
             </div>
             <Link
@@ -248,18 +254,18 @@ const HomePage = () => {
                 About Us
               </p>
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
-                Crafting Beautiful Events Since 2021
+                About E&amp;D Glamour Marketing — Dover, DE
               </h2>
               <p className="font-body text-muted-foreground leading-relaxed">
-                E&D Glamour Marketing has been transforming ordinary spaces into extraordinary
-                experiences for over a decade. Our team of creative professionals brings
-                passion and precision to every project, ensuring your special moments
+                E&amp;D Glamour Marketing has been transforming ordinary spaces into extraordinary
+                experiences since 2021. Based in Dover, Delaware, our team of creative professionals
+                brings passion and precision to every project, ensuring your special moments
                 are as unique as your story.
               </p>
               <p className="font-body text-muted-foreground leading-relaxed">
                 From weddings to corporate galas, social soirées to graduations, baby showers to
-                birthday celebrations, we offer comprehensive décor services and an extensive
-                rental inventory to bring your vision to life.
+                birthday celebrations, we serve all of Delaware, Maryland, Pennsylvania, and
+                New Jersey with comprehensive décor services and an extensive rental inventory.
               </p>
               <Link to="/about">
                 <Button
@@ -278,13 +284,15 @@ const HomePage = () => {
             >
               <img
                 src="/gallary-2024-r.jpeg"
-                alt="Wedding decoration"
+                alt="Wedding décor setup by E&D Glamour Marketing in Dover, Delaware"
                 className="rounded-lg w-full h-64 object-cover"
+                loading="lazy"
               />
               <img
                 src="/gallary-birthday.jpeg"
-                alt="Corporate event"
+                alt="Birthday party decoration by E&D Glamour Marketing, Dover DE"
                 className="rounded-lg w-full h-64 object-cover mt-8"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -313,7 +321,7 @@ const HomePage = () => {
               transition={{ delay: 0.1 }}
               className="font-heading text-3xl md:text-4xl font-bold text-foreground"
             >
-              What Our Clients Say
+              What Our Delaware Clients Say
             </motion.h2>
           </div>
 
@@ -351,7 +359,7 @@ const HomePage = () => {
               viewport={{ once: true }}
               className="font-heading text-3xl md:text-4xl font-bold text-white mb-4"
             >
-              Ready to Create Your Perfect Event?
+              Ready to Plan Your Event in Delaware?
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -360,7 +368,7 @@ const HomePage = () => {
               transition={{ delay: 0.1 }}
               className="font-body text-white/80 text-lg mb-8"
             >
-              Let's discuss your vision and bring it to life together.
+              Let's discuss your vision and bring it to life. Serving Dover, Wilmington, Newark, and all of Delaware.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

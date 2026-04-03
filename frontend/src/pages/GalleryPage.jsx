@@ -4,6 +4,7 @@ import GalleryImage from '../components/GalleryImage';
 import { galleryApi } from '../lib/api';
 import { Button } from '../components/ui/button';
 import { Dialog, DialogContent } from '../components/ui/dialog';
+import SEO from '../components/SEO';
 
 const GalleryPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -24,6 +25,11 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="gallery-page">
+      <SEO
+        title="Event Décor Gallery — Weddings, Birthdays &amp; Corporate Events in Delaware"
+        description="Browse our photo gallery of stunning event decorations in Dover, Delaware. Weddings, birthday parties, corporate events, baby showers, and 360 photo booth setups."
+        canonical="/gallery"
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">

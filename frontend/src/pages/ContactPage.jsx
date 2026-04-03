@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import QuoteForm from '../components/QuoteForm';
+import SEO from '../components/SEO';
 
 const ContactItem = ({ icon: Icon, title, line1, line2 }) => (
   <div className="flex gap-4">
@@ -20,6 +21,11 @@ const ContactItem = ({ icon: Icon, title, line1, line2 }) => (
 const ContactPage = () => {
   return (
     <div className="min-h-screen pt-24" data-testid="contact-page">
+      <SEO
+        title="Contact E&amp;D Glamour Marketing | Event Planner Dover DE | (302) 281-2137"
+        description="Contact E&amp;D Glamour Marketing for event décor and party rental quotes in Dover, Delaware. Call (302) 281-2137 or email us. Serving all of DE, MD, PA &amp; NJ."
+        canonical="/contact"
+      />
       <section className="section-padding bg-muted">
         <div className="container-custom">
           <motion.div

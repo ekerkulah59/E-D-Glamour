@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard';
 import { servicesApi } from '../lib/api';
 import { serviceCategoryLabels } from '../lib/utils';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const ServicesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +28,11 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen pt-24" data-testid="services-page">
+      <SEO
+        title="Event Décor Services in Dover Delaware"
+        description="Professional wedding décor, birthday party decorations, corporate event styling, baby showers, and graduation décor in Dover, DE. Serving all of Delaware and nearby states. Get a free quote today."
+        canonical="/services"
+      />
       {/* Header */}
       <section className="section-padding bg-muted">
         <div className="container-custom">
@@ -39,11 +45,11 @@ const ServicesPage = () => {
               Our Services
             </p>
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Services
+              Event Décor Services in Dover, Delaware
             </h1>
             <p className="font-body text-muted-foreground text-lg">
-              From intimate gatherings to grand celebrations, we bring your vision to life
-              with stunning décor tailored to your unique style.
+              From intimate gatherings to grand celebrations across Delaware, Maryland, and Pennsylvania —
+              we bring your vision to life with stunning décor tailored to your unique style.
             </p>
           </motion.div>
         </div>

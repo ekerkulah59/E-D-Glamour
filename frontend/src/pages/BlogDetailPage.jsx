@@ -5,6 +5,7 @@ import { blogApi } from '../lib/api';
 import { formatDate } from '../lib/utils';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
+import SEO from '../components/SEO';
 
 const TagBadge = ({ tag }) => (
   <Badge className="bg-primary/10 text-primary hover:bg-primary/10">{tag}</Badge>
@@ -25,8 +26,31 @@ const BlogDetailPage = () => {
 
   const formattedDate = formatDate(post.created_at);
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.cover_image,
+    author: { '@type': 'Person', name: post.author },
+    publisher: {
+      '@type': 'Organization',
+      name: 'E&D Glamour Marketing',
+      url: 'https://www.edglamourmarketing.com',
+    },
+    datePublished: post.created_at,
+    mainEntityOfPage: `https://www.edglamourmarketing.com/blog/${post.slug}`,
+  };
+
   return (
     <div className="min-h-screen pt-24" data-testid="blog-detail-page">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/blog/${post.slug}`}
+        ogImage={post.cover_image}
+        schema={articleSchema}
+      />
       <div className="relative h-[40vh] md:h-[50vh]">
         <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />

@@ -37,8 +37,9 @@ const RentalCard = ({ rental, index = 0 }) => {
           <div className="image-zoom aspect-square relative">
             <img
               src={rental.images?.[0]}
-              alt={rental.name}
+              alt={`${rental.name} rental in Dover, Delaware`}
               className="w-full h-full object-cover"
+              loading="lazy"
             />
             {rental.quantity_available != null && rental.quantity_available < 10 && (
               <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground">
